@@ -20,7 +20,7 @@
             return $request;
         }
 
-        public function addCloseAnswer($idPregunta,$texto,$numero){
+        public function addCloseAnswers($idPregunta,$texto,$numero){
             $query = "INSERT INTO respuestas(id_pregunta,texto_respuesta,valor_numerico) VALUES (?,?,?)";
 
             $arrData = array($idPregunta,$texto,$numero);
@@ -29,7 +29,7 @@
             return $request;
         }
 
-        public function addOpenAnswer($idPregunta,$texto){
+        public function addOpenAnswers($idPregunta,$texto){
             $query = "INSERT INTO respuestas_abiertas(id_pregunta,texto_respuesta_abierta) VALUES (?,?)";
 
             $arrData = array($idPregunta,$texto);

@@ -127,9 +127,9 @@ document.getElementById("enviar").addEventListener("click", function () {
 
   // Preguntas abiertas
   var preguntaAbierta = document.querySelector(
-    'textarea[name="respuesta_abierta"]'
+    'textarea[name="pregunta_abierta"]'
   ).value;
-  formData.append("respuesta_abierta", preguntaAbierta);
+  formData.append("pregunta_abierta", preguntaAbierta);
 
   // Preguntas de selección
   var preguntaSeleccion = document.querySelector(
