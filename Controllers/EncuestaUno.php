@@ -11,6 +11,10 @@
             $data['close_answers'] = $this->model->getAllCloseAnswers();
             $this->views->getView($this,"encuesta_uno",$data);
         }
+
+        public function enviar(){
+            echo "enviar";
+        }
        
     }
 

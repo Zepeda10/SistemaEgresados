@@ -20,10 +20,28 @@
             return $request;
         }
 
+        public function addCloseAnswer($idPregunta,$texto,$numero){
+            $query = "INSERT INTO respuestas(id_pregunta,texto_respuesta,valor_numerico) VALUES (?,?,?)";
+
+            $arrData = array($idPregunta,$texto,$numero);
+            $request = $this->insert($query,$arrData);
+
+            return $request;
+        }
+
+        public function addOpenAnswer($idPregunta,$texto){
+            $query = "INSERT INTO respuestas_abiertas(id_pregunta,texto_respuesta_abierta) VALUES (?,?)";
+
+            $arrData = array($idPregunta,$texto);
+            $request = $this->insert($query,$arrData);
+
+            return $request;
+        }
+
         
         // EXTRAS...
 
-        public function add($nombre, $edad){
+        public function add2($nombre, $edad){
             $query = "INSERT INTO ejemplo(nombre,edad) VALUES (?,?)";
 
             $arrData = array($nombre,$apellidos,$user,$pass,$rol);

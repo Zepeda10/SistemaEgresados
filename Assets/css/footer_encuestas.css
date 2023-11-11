@@ -4,4 +4,8 @@ footer {
   color: white; /* Color del texto */
   padding: 10px 0; /* Espaciado interior del footer */
   margin-top: 20px; /* Margen superior para separar el footer del contenido */
+
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
