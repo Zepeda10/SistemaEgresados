@@ -20,10 +20,10 @@
             return $request;
         }
 
-        public function addUsersAnswers($idEncuesta,$idPregunta,$idRespuestaOpcion,$texto){
-            $query = "INSERT INTO respuestas_usuarios_encuestas(id_encuesta,id_pregunta,id_respuesta_opciones,texto_respuesta_abierta) VALUES (?,?,?,?)";
+        public function addUsersAnswers($idUsuario,$idEncuesta,$idPregunta,$idRespuestaOpcion,$texto){
+            $query = "INSERT INTO respuestas_usuarios_encuestas(id_usuario,id_encuesta,id_pregunta,id_respuesta_opciones,texto_respuesta_abierta) VALUES (?,?,?,?,?)";
 
-            $arrData = array($idEncuesta,$idPregunta,$idRespuestaOpcion,$texto);
+            $arrData = array($idUsuario,$idEncuesta,$idPregunta,$idRespuestaOpcion,$texto);
             $request = $this->insert($query,$arrData);
 
             return $request;

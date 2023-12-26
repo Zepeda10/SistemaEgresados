@@ -24,6 +24,7 @@
                                 <label for="pregunta_abierta">'.$question['texto_pregunta'].'</label>
                                 <textarea id="pregunta_abierta" name="respuesta[' . $question['id_pregunta'] . '][]" class="form-control"></textarea>
                                 <input type="hidden" name="pregunta_id[]" value='.$question['id_pregunta'].'>
+                                <input type="hidden" name="tipo_pregunta[]" value="abierta">
                             </li>';
 
                     }else if($question['tipo_pregunta'] == 'Selección'){
@@ -32,6 +33,7 @@
                         echo '<li class="list-group-item mb-2">
                                 <p>' . $question['texto_pregunta'] . '</p>
                                 <input type="hidden" name="pregunta_id[]" value='.$question['id_pregunta'].'>
+                                <input type="hidden" name="tipo_pregunta[]" value="cerrada">
                                 <div class="col-2">';
 
                         echo '<select class="form-select" name="respuesta[' . $question['id_pregunta'] . '][]">';
@@ -55,6 +57,7 @@
                         echo '<li class="list-group-item mb-2">
                                 <p>' . $question['texto_pregunta'] . '</p>
                                 <input type="hidden" name="pregunta_id[]" value='.$question['id_pregunta'].'>
+                                <input type="hidden" name="tipo_pregunta[]" value="cerrada">
                                 ';
                     
                         $filteredData = array_filter($data['close_answers'], function ($element) use ($id) {
@@ -71,7 +74,9 @@
                         $id = $question['id_pregunta'];
 
                         echo '<li class="list-group-item mb-2">
-                                <p>' . $question['texto_pregunta'] . '</p>';
+                                <p>' . $question['texto_pregunta'] . '</p>
+                                <input type="hidden" name="tipo_pregunta[]" value="cerrada">
+                                ';
 
                         $filteredData = array_filter($data['close_answers'], function ($element) use ($id) {
                             return filterByAttributeValue($element, $id);
