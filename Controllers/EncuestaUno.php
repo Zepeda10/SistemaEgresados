@@ -13,21 +13,36 @@
         }
 
         public function enviar(){
-            $respuestasAbiertas = $_POST["pregunta_abierta"];
-            $idsAbiertas = $_POST["pregunta_abierta_id"];
-            $respuestasSeleccion = $_POST["pregunta_seleccion"];
-            $idsSeleccion = $_POST["pregunta_seleccion_id"];
-            $respuestasRadio = $_POST["pregunta_radio"];
-            $idsRadio = $_POST["pregunta_radio_id"];
-            $respuestasCheckbox = isset($_POST["pregunta_checkbox"]) ? $_POST["pregunta_checkbox"] : [];
-            $idsCheckbox = $_POST["pregunta_checkbox_id"];
-            
-            // Pasar datos a modelo...
-            // $this->model->addCloseAnswers();
-            // $this->model->addOpenAnswers();
+            $answers = $_POST["respuesta"];
+            $ids = $_POST["pregunta_id"];
+            $quizId = 1;
+            $answerIdOpc = 10; // hardcodeado
 
-            // header("Location: encuesta_dos.php");
-            exit;
+            echo "enviar...";
+
+            foreach ($answers as $answerId => $allAnswers) {
+                foreach ($allAnswers as $answer) {
+                    //$this->model->addUsersAnswers($quizId, $answerId, $answerIdOpc, $answer);
+                    echo "<br>";
+                    echo $quizId . " - " . $answerId . " - " .$answerIdOpc. " - " . $answer ;
+                    echo "<br>";
+                }
+            }
+
+            /*
+            if (!empty($answers) && !empty($ids)) {
+                foreach ($ids as $key => $id) {
+                    $answer = isset($answers[$key]) ? $answers[$key] : null;
+
+                    $this->model->addUsersAnswers($id, $answer);
+                }
+        
+                // header("Location: encuesta_dos.php");
+                exit;
+            } else {
+                echo "Error: Datos insuficientes o mal formateados.";
+            }
+            */
         }
        
     }

@@ -14,29 +14,21 @@
         }
 
         public function getAllCloseAnswers(){
-            $query = "SELECT * from respuestas";
+            $query = "SELECT * from respuestas_opciones";
             $request = $this->select_all($query);
 
             return $request;
         }
 
-        public function addCloseAnswers($idPregunta,$texto,$numero){
-            $query = "INSERT INTO respuestas(id_pregunta,texto_respuesta,valor_numerico) VALUES (?,?,?)";
+        public function addUsersAnswers($idEncuesta,$idPregunta,$idRespuestaOpcion,$texto){
+            $query = "INSERT INTO respuestas_usuarios_encuestas(id_encuesta,id_pregunta,id_respuesta_opciones,texto_respuesta_abierta) VALUES (?,?,?,?)";
 
-            $arrData = array($idPregunta,$texto,$numero);
+            $arrData = array($idEncuesta,$idPregunta,$idRespuestaOpcion,$texto);
             $request = $this->insert($query,$arrData);
 
             return $request;
         }
 
-        public function addOpenAnswers($idPregunta,$texto){
-            $query = "INSERT INTO respuestas_abiertas(id_pregunta,texto_respuesta_abierta) VALUES (?,?)";
-
-            $arrData = array($idPregunta,$texto);
-            $request = $this->insert($query,$arrData);
-
-            return $request;
-        }
 
         
         // EXTRAS...
