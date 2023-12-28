@@ -27,29 +27,9 @@ function showPage(page) {
   });
 
   currentPageElement.textContent = page;
-
-  // Ocultar o mostrar botones "anterior" , "siguiente" y "enviar" según la página actual
-  /*
-  if (page === 1) {
-    prevButton.style.display = "none";
-  } else {
-    prevButton.style.display = "block";
-  }
-  */
-
   const totalPages = Math.ceil(
     content.querySelectorAll("li").length / itemsPerPage
   );
-
-  /*
-  if (page === totalPages) {
-    nextButton.style.display = "none";
-    sendButton.style.display = "block";
-  } else {
-    nextButton.style.display = "block";
-    sendButton.style.display = "none";
-  }
-  */
 
   // Muestra u oculta el botón "Anterior" según el número de página
   prevButton.classList.toggle("d-none", page === 1);

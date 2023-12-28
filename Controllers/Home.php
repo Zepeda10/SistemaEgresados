@@ -6,7 +6,7 @@
             parent::__construct();
         }
 
-        public function inicio(){
+        public function home(){
             $this->views->getView($this,"home");
         }      
         

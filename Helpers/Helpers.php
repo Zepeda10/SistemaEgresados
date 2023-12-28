@@ -5,7 +5,7 @@
     }
 
     function home_url(){
-        return BASE_URL."home/inicio";
+        return BASE_URL."home/home";
     }
 
     //Muestra información formateada
