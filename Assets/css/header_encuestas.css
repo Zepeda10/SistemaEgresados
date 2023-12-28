@@ -22,3 +22,8 @@
 .cabecera h2 {
   font-size: 20px;
 }
+
+.cabecera a {
+  text-decoration: none;
+  color: inherit;
+}

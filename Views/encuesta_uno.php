@@ -112,21 +112,22 @@
 
     <!-- Botones al final -->
     <div class="container mt-3 botones">
-        <div class="row paginacion justify-content-between">
-            <div class="col-md-3">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-3" id="anterior-container">
                 <button type="button" class="btn btn-primary" id="anterior">Página Anterior</button>
             </div>
-            <div class="col-md-3 text-center">
-                <span id="actual">1</span> <!-- Puedes actualizar el número de página aquí -->
+            <div class="col-md-3">
+                <span id="actual">1</span>
             </div>
-            <div class="col-md-3 text-end">
+            <div class="col-md-3" id="siguiente-container">
                 <button type="button" class="btn btn-primary" id="siguiente">Siguiente Página</button>
-            </div>
-            <div class="col-md-3 text-end">
+            </div>      
+            <div class="col-md-3 d-none" id="enviar-container">
                 <button type="submit" class="btn btn-success" id="enviar">Enviar</button>
             </div>
         </div>
     </div>
+
 </form>
 
 </body>

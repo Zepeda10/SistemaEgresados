@@ -5,9 +5,6 @@
 <link rel="stylesheet" href="<?php echo css_url(); ?>home-inicio.css">
 
 
-
-
-
 <body>
 
     <div class="container contenido">
@@ -23,15 +20,6 @@
 		Gracias por su gentil colaboración.<p></b>
 
 
-
-
-        <?php   
-        /*
-            foreach ($data as $e){
-                echo $e['nombre'];
-            }
-        */
-        ?>
 
         <a href="<?php echo base_url(); ?>EncuestaUno/preguntas" class="btn btn-primary">¡Inicar encuesta!</a>
 

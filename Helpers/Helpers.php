@@ -4,6 +4,10 @@
         return BASE_URL;
     }
 
+    function home_url(){
+        return BASE_URL."home/inicio";
+    }
+
     //Muestra información formateada
     function dep($data){
         $format = print_r('<pre>');

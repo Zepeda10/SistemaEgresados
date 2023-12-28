@@ -33,6 +33,7 @@
         
         // EXTRAS...
 
+        /*
         public function add2($nombre, $edad){
             $query = "INSERT INTO ejemplo(nombre,edad) VALUES (?,?)";
 
@@ -62,6 +63,7 @@
 
             return $request; 
         }
+        */
 
     }
 

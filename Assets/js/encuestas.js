@@ -4,6 +4,9 @@ const nextButton = document.getElementById("siguiente");
 const sendButton = document.getElementById("enviar");
 const currentPageElement = document.getElementById("actual");
 const content = document.getElementById("elementos-preguntas");
+const sendContainer = document.getElementById("enviar-container");
+const nextContainer = document.getElementById("siguiente-container");
+const prevContainer = document.getElementById("anterior-container");
 
 // Configuramos el estado inicial
 let currentPage = 1;
@@ -26,22 +29,38 @@ function showPage(page) {
   currentPageElement.textContent = page;
 
   // Ocultar o mostrar botones "anterior" , "siguiente" y "enviar" según la página actual
+  /*
   if (page === 1) {
     prevButton.style.display = "none";
   } else {
     prevButton.style.display = "block";
   }
+  */
 
   const totalPages = Math.ceil(
     content.querySelectorAll("li").length / itemsPerPage
   );
 
+  /*
   if (page === totalPages) {
     nextButton.style.display = "none";
     sendButton.style.display = "block";
   } else {
     nextButton.style.display = "block";
     sendButton.style.display = "none";
+  }
+  */
+
+  // Muestra u oculta el botón "Anterior" según el número de página
+  prevButton.classList.toggle("d-none", page === 1);
+
+  // Muestra u oculta el botón "Siguiente" según el número de página
+  nextContainer.classList.toggle("d-none", page === totalPages);
+
+  // Muestra u oculta el botón "Enviar" según el número de página
+  sendContainer.classList.toggle("d-none", page !== totalPages);
+  if (page === totalPages) {
+    sendContainer.classList.remove("d-none");
   }
 }
 

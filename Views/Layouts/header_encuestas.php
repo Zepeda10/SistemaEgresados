@@ -20,7 +20,7 @@
                 <img src="<?php echo images_url(); ?>logo1.jpg" alt="Imagen 1" class="img-fluid">
             </div>
             <div class="col-md-4">
-                <h1>Cuestionario de Seguimiento de Egresados</h1>
+            <h1><a href="<?php echo home_url(); ?>">Cuestionario de Seguimiento de Egresados</a></h1>
                 <h2>Instituto Tecnológico de Tuxtepec</h2>
             </div>
             <div class="col-md-4">
