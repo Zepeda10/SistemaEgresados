@@ -58,6 +58,10 @@
             header("Location: ".base_url()."login/login");
             exit;
         }
+
+        public function logout(){
+            header("Location: ".base_url()."login/admin");
+        }
         
     }
 

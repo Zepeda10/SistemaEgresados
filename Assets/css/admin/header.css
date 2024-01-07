@@ -1,0 +1,41 @@
+body {
+  font-family: "Arial", sans-serif;
+}
+
+.sidebar {
+  height: 100vh;
+  background-color: #333;
+  color: #fff;
+  padding-top: 20px;
+}
+
+.sidebar a {
+  color: #fff;
+}
+
+.sidebar img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sidebar-menu {
+  padding-left: 15px;
+  border-top: 1px solid #555;
+}
+
+.sidebar-menu a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-menu a:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 20px;
+}
