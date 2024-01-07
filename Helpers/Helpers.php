@@ -8,6 +8,10 @@
         return BASE_URL."home/home";
     }
 
+    function admin_url(){
+        return BASE_URL."admin/";
+    }
+
     //Muestra información formateada
     function dep($data){
         $format = print_r('<pre>');

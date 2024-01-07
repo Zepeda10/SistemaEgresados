@@ -8,25 +8,25 @@
         <img src="<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle">
       </div>
       <div class="sidebar-menu">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="<?php echo admin_url(); ?>encuestas">
           Encuestas
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo admin_url(); ?>subencuestas">
           Subencuestas
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo admin_url(); ?>preguntasEncuestas">
           Preguntas encuestas
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo admin_url(); ?>preguntasSubencuestas">
           Preguntas subencuestas
         </a>
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="<?php echo admin_url(); ?>respuestasEncuestas">
           Respuestas encuestas
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo admin_url(); ?>respuestasSubencuestas">
           Respuestas subencuestas
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo admin_url(); ?>usuarios">
           Usuarios
         </a>
       </div>
