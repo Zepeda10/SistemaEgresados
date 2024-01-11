@@ -5,19 +5,19 @@
 <?php   
     include ("Layouts/sidebar.php");
 ?>
-
-<!-- Área de contenido -->
-<div class="content text-center">
-      <h2 class="mb-4">Preguntas Subencuestas</h2>
+      <!-- Área de contenido -->
+      <div class="content text-center">
+      <h2 class="mb-4">Respuestas Encuestas</h2>
       <button class="btn btn-success float-start mb-3">Agregar</button>
-
-<?php
-if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["preguntas"]) > 0) {
+    
+      <?php
+       // Verifica si hay datos en el array "respuestas"
+    if (isset($data["respuestas"]) && is_array($data["respuestas"]) && count($data["respuestas"]) > 0) {
         // Define el número de registros por página
         $registros_por_pagina = 10;
 
         // Divide el array en bloques de 10 elementos
-        $paginas = array_chunk($data["preguntas"], $registros_por_pagina);
+        $paginas = array_chunk($data["respuestas"], $registros_por_pagina);
 
         // Obtiene el número total de páginas
         $total_paginas = count($paginas);
@@ -29,26 +29,32 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
         $pagina_actual = max(min($pagina_actual, $total_paginas), 1);
         $pagina_actual--; // Ajusta el índice del array
 
+        // Contenido de la tabla cuando hay datos
         echo '<table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Subncuesta</th>
-                    <th scope="col">Tipo de pregunta</th>
-                    <th scope="col">Pregunta</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>';
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Encuesta</th>
+                        <th scope="col">Pregunta</th>
+                        <th scope="col">Respuesta Cerrada</th>
+                        <th scope="col">Respuesta Abierta</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>';
 
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
-            echo '<td>' . $row['id_pregunta_subencuesta'] . '</td>';
-            echo '<td>' . $row['id_subencuesta'] . '</td>';
-            echo '<td>' . $row['tipo_pregunta'] . '</td>';
-            echo '<td>' . $row['texto_pregunta'] . '</td>';
+            echo '<td>' . $row['id_respuesta_usuario'] . '</td>';
+            echo '<td>' . $row['id_usuario'] . '</td>';
+            echo '<td>' . $row['id_encuesta'] . '</td>';
+            echo '<td>' . $row['id_pregunta'] . '</td>';
+            echo '<td>' . $row['id_respuesta_opciones'] . '</td>';
+            echo '<td>' . $row['texto_respuesta_abierta'] . '</td>';
+            echo '<td>' . $row['fecha_respuesta'] . '</td>';
             echo '<td>
-                    <button class="btn btn-primary">Editar</button>
                     <button class="btn btn-danger">Eliminar</button>
                   </td>';
             echo '</tr>';
@@ -84,14 +90,17 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
         // Contenido de la tabla cuando no hay datos
       echo '<table class="table">
       <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Subencuesta</th>
-                    <th scope="col">Tipo de pregunta</th>
-                    <th scope="col">Pregunta</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
+          <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Encuesta</th>
+              <th scope="col">Pregunta</th>
+              <th scope="col">Respuesta Cerrada</th>
+              <th scope="col">Respuesta Abierta</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Acciones</th>
+          </tr>
+      </thead>
       <tbody>
           <tr>
               <td colspan="8">Aún no hay datos en esta tabla.</td>
@@ -100,6 +109,11 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
     </table>';
     }
     ?>
+
+      </div>
+    </main>
+  </div>
+</div>
 
 <?php   
     include ("Layouts/footer.php");

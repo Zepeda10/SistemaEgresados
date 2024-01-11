@@ -20,6 +20,16 @@
             $this->views->getView($this,"subencuestas",$data);
         }
 
+        public function opcionMultipleEncuesta(){
+            $data["opciones"] = $this->model->getAllmultipleChoiceSurveys();
+            $this->views->getView($this,"opcion_multiple_encuesta",$data);
+        }
+
+        public function opcionMultipleSubencuesta(){
+            $data["opciones"] = $this->model->getAllmultipleChoiceSubsurveys();
+            $this->views->getView($this,"opcion_multiple_subencuesta",$data);
+        }
+
         public function preguntasEncuestas(){
             $data["preguntas"] = $this->model->getAllSurveys();
             $this->views->getView($this,"preguntas_encuestas",$data);
@@ -31,12 +41,12 @@
         }
 
         public function respuestasEncuestas(){
-            $data["respuestas"] = $this->model->getAllSubsurveys();
+            $data["respuestas"] = $this->model->getAllSurveysResponses();
             $this->views->getView($this,"respuestas_encuestas",$data);
         }
 
         public function respuestasSubencuestas(){
-            $data["respuestas"] = $this->model->getAllSubsurveys();
+            $data["respuestas"] = $this->model->getAllSubsurveysResponses();
             $this->views->getView($this,"respuestas_subencuestas",$data);
         }
 

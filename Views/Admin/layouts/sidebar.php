@@ -14,6 +14,12 @@
         <a class="nav-link" href="<?php echo admin_url(); ?>subencuestas">
           Subencuestas
         </a>
+        <a class="nav-link" href="<?php echo admin_url(); ?>opcionMultipleEncuesta">
+          Opciones múltiples encuestas
+        </a>
+        <a class="nav-link" href="<?php echo admin_url(); ?>opcionMultipleSubencuesta">
+          Opciones múltiples subencuestas
+        </a>
         <a class="nav-link" href="<?php echo admin_url(); ?>preguntasEncuestas">
           Preguntas encuestas
         </a>

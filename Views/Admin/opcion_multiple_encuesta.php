@@ -5,19 +5,18 @@
 <?php   
     include ("Layouts/sidebar.php");
 ?>
-
-<!-- Área de contenido -->
-<div class="content text-center">
-      <h2 class="mb-4">Preguntas Subencuestas</h2>
+      <!-- Área de contenido -->
+      <div class="content text-center">
+      <h2 class="mb-4">Opciones Múltiples Encuestas</h2>
       <button class="btn btn-success float-start mb-3">Agregar</button>
-
-<?php
-if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["preguntas"]) > 0) {
+    
+      <?php
+      if (isset($data["opciones"]) && is_array($data["opciones"]) && count($data["opciones"]) > 0) {
         // Define el número de registros por página
         $registros_por_pagina = 10;
 
         // Divide el array en bloques de 10 elementos
-        $paginas = array_chunk($data["preguntas"], $registros_por_pagina);
+        $paginas = array_chunk($data["opciones"], $registros_por_pagina);
 
         // Obtiene el número total de páginas
         $total_paginas = count($paginas);
@@ -33,9 +32,9 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Subncuesta</th>
-                    <th scope="col">Tipo de pregunta</th>
                     <th scope="col">Pregunta</th>
+                    <th scope="col">Opción</th>
+                    <th scope="col">Valor numérico</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -43,10 +42,10 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
 
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
-            echo '<td>' . $row['id_pregunta_subencuesta'] . '</td>';
-            echo '<td>' . $row['id_subencuesta'] . '</td>';
-            echo '<td>' . $row['tipo_pregunta'] . '</td>';
-            echo '<td>' . $row['texto_pregunta'] . '</td>';
+            echo '<td>' . $row['id_respuesta'] . '</td>';
+            echo '<td>' . $row['id_pregunta'] . '</td>';
+            echo '<td>' . $row['texto_respuesta'] . '</td>';
+            echo '<td>' . $row['valor_numerico'] . '</td>';
             echo '<td>
                     <button class="btn btn-primary">Editar</button>
                     <button class="btn btn-danger">Eliminar</button>
@@ -80,15 +79,15 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
 
         echo '</ul>';
         echo '</nav>';
-    } else {
+      } else {
         // Contenido de la tabla cuando no hay datos
       echo '<table class="table">
       <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Subencuesta</th>
-                    <th scope="col">Tipo de pregunta</th>
                     <th scope="col">Pregunta</th>
+                    <th scope="col">Opción</th>
+                    <th scope="col">Valor numérico</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -100,6 +99,11 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
     </table>';
     }
     ?>
+
+      </div>
+    </main>
+  </div>
+</div>
 
 <?php   
     include ("Layouts/footer.php");

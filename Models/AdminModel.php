@@ -22,6 +22,20 @@
             return $request;
         }
 
+        public function getAllmultipleChoiceSurveys(){
+            $query = "SELECT * from respuestas_opciones";
+            $request = $this->select_all($query);
+
+            return $request;
+        }
+
+        public function getAllmultipleChoiceSubsurveys(){
+            $query = "SELECT * from respuestas_opciones_subencuestas";
+            $request = $this->select_all($query);
+
+            return $request;
+        }
+
         public function getAllSurveys(){
             $query = "SELECT * from preguntas";
             $request = $this->select_all($query);
@@ -31,6 +45,20 @@
 
         public function getAllSubsurveys(){
             $query = "SELECT * from preguntas_subencuestas";
+            $request = $this->select_all($query);
+
+            return $request;
+        }
+
+        public function getAllSurveysResponses(){
+            $query = "SELECT * from respuestas_usuarios_encuestas";
+            $request = $this->select_all($query);
+
+            return $request;
+        }
+
+        public function getAllSubsurveysResponses(){
+            $query = "SELECT * from respuestas_usuarios_subencuestas";
             $request = $this->select_all($query);
 
             return $request;

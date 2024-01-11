@@ -11,6 +11,7 @@
       <button class="btn btn-success float-start mb-3">Agregar</button>
     
       <?php
+      if (isset($data["usuarios"]) && is_array($data["usuarios"]) && count($data["usuarios"]) > 0) {
         // Define el número de registros por página
         $registros_por_pagina = 10;
 
@@ -27,18 +28,18 @@
         $pagina_actual = max(min($pagina_actual, $total_paginas), 1);
         $pagina_actual--; // Ajusta el índice del array
 
-        echo '<table class="table">';
-        echo '<thead>';
-        echo '<tr>';
-        echo '<th scope="col">ID</th>';
-        echo '<th scope="col">Nombre Completo</th>';
-        echo '<th scope="col">No. Estudiante</th>';
-        echo '<th scope="col">Correo</th>';
-        echo '<th scope="col">Tipo</th>';
-        echo '<th scope="col">Acciones</th>';
-        echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
+        echo '<table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">No. Estudiante</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>';
 
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
@@ -81,6 +82,26 @@
 
         echo '</ul>';
         echo '</nav>';
+      } else {
+        // Contenido de la tabla cuando no hay datos
+      echo '<table class="table">
+      <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">No. Estudiante</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+      <tbody>
+          <tr>
+              <td colspan="8">Aún no hay datos en esta tabla.</td>
+          </tr>
+      </tbody>
+    </table>';
+    }
     ?>
 
       </div>
