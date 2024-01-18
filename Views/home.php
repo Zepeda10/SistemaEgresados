@@ -6,8 +6,10 @@
 
 
 <body>
+<a href="<?php echo base_url(); ?>home/cerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</a>
 
     <div class="container contenido">
+    
         <h1>Cuestionario de Seguimiento de Egresados</h1>
         <p>Instituto Tecnologico de Tuxtepec</p>
 

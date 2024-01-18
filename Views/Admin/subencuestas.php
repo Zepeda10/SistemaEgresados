@@ -30,7 +30,9 @@ include("Layouts/sidebar.php");
             echo '<td>' . $row['titulo'] . '</td>';
             echo '<td>' . $row['descripcion'] . '</td>';
             echo '<td>
+                <a href="'.base_url()."admin/editarSubencuesta/".$row["id_subencuesta"].'">
                     <button class="btn btn-primary">Editar</button>
+                </a>
                   </td>';
             echo '</tr>';
         }

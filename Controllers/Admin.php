@@ -6,6 +6,8 @@
             parent::__construct();
         }
 
+        /*-------------------------- VER PÁGINAS DEL MENÚ --------------------------*/
+
         public function inicio(){
             $this->views->getView($this,"inicio");
         }
@@ -54,6 +56,34 @@
             $data["usuarios"] = $this->model->getAllUsers();
             $this->views->getView($this,"usuarios",$data);
         }
+
+        // -------------------------- EDITAR --------------------------
+
+        public function editarEncuesta($id){
+            $data["encuesta"] = $this->model->getOneHeaderSurvey($id);
+            $this->views->getView($this,"editar_cabecera_encuesta",$data);
+        }
+
+        public function actualizarEncuesta(){
+            $id = $_POST["id_encuesta"];
+            $titulo = $_POST["titulo_encuesta"];
+            $this->model->updateHeaderSurvey($titulo,$id);
+            header("Location: ".base_url()."admin/encuestas");
+        }
+
+        public function editarSubencuesta($id){
+            $data["subencuesta"] = $this->model->getOneHeaderSubsurvey($id);
+            $this->views->getView($this,"editar_cabecera_subencuesta",$data);
+        }
+
+        public function actualizarsubencuesta(){
+            $id = $_POST["id_subencuesta"];
+            $titulo = $_POST["titulo"];
+            $descripcion = $_POST["descripcion"];
+            $this->model->updateHeaderSubsurvey($titulo,$descripcion,$id);
+            header("Location: ".base_url()."admin/subencuestas");
+        }
+
         
     }
 
