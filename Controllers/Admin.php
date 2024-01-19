@@ -140,6 +140,21 @@
             header("Location: ".base_url()."admin/preguntasSubencuestas");
         }
 
+        public function editarUsuario($id){
+            $data["usuario"] = $this->model->getOneUser($id);
+            $this->views->getView($this,"editar_usuario",$data);
+        }
+
+        public function actualizarUsuario(){
+            $id = $_POST["id_usuario"];
+            $nombre = $_POST["nombre"];
+            $numero = $_POST["numero_estudiante"];
+            $correo = $_POST["correo"];
+            $tipo = $_POST["tipo"];
+            $this->model->updateUser($id,$nombre,$numero,$correo,$tipo);
+            header("Location: ".base_url()."admin/usuarios");
+        }
+
         
     }
 

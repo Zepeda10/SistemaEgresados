@@ -156,6 +156,20 @@
 
             return $request;
         }
+
+        public function getOneUser($id){
+            $query = "SELECT * FROM usuarios WHERE id_usuario = $id";
+            $request = $this->select($query);
+
+            return $request;
+        }
+
+        public function updateUser($id,$nombre,$numero,$correo,$tipo){
+            $query = "UPDATE usuarios SET nombre = '$nombre' , numero_estudiante = '$numero' , correo = '$correo' , tipo = '$tipo' WHERE id_usuario = $id";
+            $request = $this->update($query);
+
+            return $request;
+        }
         
     }
 

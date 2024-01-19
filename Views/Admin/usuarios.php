@@ -50,8 +50,12 @@
              // Verifica si el campo "rol" es "admin" y aplica la clase de resaltado
             echo '<td ' . ($row['tipo'] === 'admin' ? 'class="fw-bold text-success"' : '') . '>' . $row['tipo'] . '</td>';
             echo '<td>
-                    <button class="btn btn-primary">Editar</button>
-                    <button class="btn btn-danger">Eliminar</button>
+                    <a href="'.base_url()."admin/editarUsuario/".$row["id_usuario"].'">
+                        <button class="btn btn-primary">Editar</button>
+                    </a>
+                    <a href="'.base_url()."admin/eliminarUsuario/".$row["id_usuario"].'">
+                        <button class="btn btn-danger">Eliminar</button>
+                    </a>
                   </td>';
             echo '</tr>';
         }
