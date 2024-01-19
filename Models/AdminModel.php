@@ -129,7 +129,33 @@
             return $request;
         }
 
+        public function getOneQuestionSurvey($id){
+            $query = "SELECT * FROM preguntas WHERE id_pregunta = $id";
+            $request = $this->select($query);
 
+            return $request;
+        }
+
+        public function updateQuestionSurvey($id,$idEncuesta,$tipo,$pregunta){
+            $query = "UPDATE preguntas SET id_encuesta = $idEncuesta , tipo_pregunta = '$tipo' , texto_pregunta = '$pregunta' WHERE id_pregunta = $id";
+            $request = $this->update($query);
+
+            return $request;
+        }
+
+        public function getOneQuestionSubsurvey($id){
+            $query = "SELECT * FROM preguntas_subencuestas WHERE id_pregunta_subencuesta = $id";
+            $request = $this->select($query);
+
+            return $request;
+        }
+
+        public function updateQuestionSubsurvey($id,$idSubencuesta,$tipo,$pregunta){
+            $query = "UPDATE preguntas_subencuestas SET id_subencuesta = $idSubencuesta , tipo_pregunta = '$tipo' , texto_pregunta = '$pregunta' WHERE id_pregunta_subencuesta = $id";
+            $request = $this->update($query);
+
+            return $request;
+        }
         
     }
 

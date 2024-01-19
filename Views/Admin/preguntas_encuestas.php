@@ -47,8 +47,12 @@
             echo '<td>' . $row['tipo_pregunta'] . '</td>';
             echo '<td>' . $row['texto_pregunta'] . '</td>';
             echo '<td>
+                <a href="'.base_url()."admin/editarPreguntaEncuesta/".$row["id_pregunta"].'">
                     <button class="btn btn-primary">Editar</button>
+                </a>
+                <a href="'.base_url()."admin/eeliminarPreguntaEncuesta/".$row["id_pregunta"].'">
                     <button class="btn btn-danger">Eliminar</button>
+                </a>
                   </td>';
             echo '</tr>';
         }

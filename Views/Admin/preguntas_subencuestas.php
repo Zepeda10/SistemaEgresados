@@ -48,8 +48,12 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
             echo '<td>' . $row['tipo_pregunta'] . '</td>';
             echo '<td>' . $row['texto_pregunta'] . '</td>';
             echo '<td>
-                    <button class="btn btn-primary">Editar</button>
-                    <button class="btn btn-danger">Eliminar</button>
+                    <a href="'.base_url()."admin/editarPreguntaSubencuesta/".$row["id_pregunta_subencuesta"].'">
+                        <button class="btn btn-primary">Editar</button>
+                    </a>
+                    <a href="'.base_url()."admin/eliminarPreguntaSubencuesta/".$row["id_pregunta_subencuesta"].'">
+                        <button class="btn btn-danger">Eliminar</button>
+                    </a>
                   </td>';
             echo '</tr>';
         }

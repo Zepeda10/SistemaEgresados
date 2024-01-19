@@ -112,6 +112,34 @@
             header("Location: ".base_url()."admin/opcionMultipleSubencuesta");
         }
 
+        public function editarPreguntaEncuesta($id){
+            $data["pregunta"] = $this->model->getOneQuestionSurvey($id);
+            $this->views->getView($this,"editar_pregunta_encuesta",$data);
+        }
+
+        public function actualizarPreguntaEncuesta(){
+            $id = $_POST["id_pregunta"];
+            $idEncuesta = $_POST["id_encuesta"];
+            $tipo = $_POST["tipo_pregunta"];
+            $pregunta = $_POST["texto_pregunta"];
+            $this->model->updateQuestionSurvey($id,$idEncuesta,$tipo,$pregunta);
+            header("Location: ".base_url()."admin/preguntasEncuestas");
+        }
+
+        public function editarPreguntaSubencuesta($id){
+            $data["pregunta"] = $this->model->getOneQuestionSubsurvey($id);
+            $this->views->getView($this,"editar_pregunta_subencuesta",$data);
+        }
+
+        public function actualizarPreguntaSubencuesta(){
+            $id = $_POST["id_pregunta_subencuesta"];
+            $idSubencuesta = $_POST["id_subencuesta"];
+            $tipo = $_POST["tipo_pregunta"];
+            $pregunta = $_POST["texto_pregunta"];
+            $this->model->updateQuestionSubsurvey($id,$idSubencuesta,$tipo,$pregunta);
+            header("Location: ".base_url()."admin/preguntasSubencuestas");
+        }
+
         
     }
 
