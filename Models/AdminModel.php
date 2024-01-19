@@ -101,6 +101,34 @@
             return $request;
         }
 
+        public function getOneChoiceSurveys($id){
+            $query = "SELECT * FROM respuestas_opciones WHERE id_respuesta = $id";
+            $request = $this->select($query);
+
+            return $request;
+        }
+
+        public function updateChoiceSurveys($id,$idPregunta,$opcion,$valor){
+            $query = "UPDATE respuestas_opciones SET id_pregunta = $idPregunta , texto_respuesta = '$opcion' , valor_numerico = $valor WHERE id_respuesta = $id";
+            $request = $this->update($query);
+
+            return $request;
+        }
+
+        public function getOneChoiceSubsurveys($id){
+            $query = "SELECT * FROM respuestas_opciones_subencuestas WHERE id_respuesta = $id";
+            $request = $this->select($query);
+
+            return $request;
+        }
+
+        public function updateChoiceSubsurveys($id,$idPregunta,$opcion,$valor){
+            $query = "UPDATE respuestas_opciones_subencuestas SET id_pregunta_subencuesta = $idPregunta , texto_respuesta = '$opcion' , valor_numerico = $valor WHERE id_respuesta = $id";
+            $request = $this->update($query);
+
+            return $request;
+        }
+
 
         
     }
