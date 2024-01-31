@@ -8,19 +8,20 @@ include("Layouts/sidebar2.php");
     <h2 class="mb-4">Editar subencuesta</h2>
 
     <?php
-     echo '<div class="d-flex flex-column">'; // Crear un contenedor de columna
-     echo '<form method="post" action="'.base_url().'admin/actualizarSubencuesta" class="form-inline">'; // Agregamos la clase "form-inline" para hacer el formulario más pequeño
-         echo '<div class="form-group mb-2">';
-         echo '<label for="titulo_encuesta" class="sr-only">Título</label>';
-         echo '<input type="text" class="form-control col-2" id="titulo" name="titulo" value="' . $data["subencuesta"]["titulo"] . '" >';
-         echo '<label for="titulo_encuesta" class="sr-only">Descripción</label>';
-         echo '<input type="text" class="form-control col-2" id="descripcion" name="descripcion" value="' . $data["subencuesta"]["descripcion"] . '" >';
-         echo '<input type="hidden" name="id_subencuesta" value="'. $data["subencuesta"]["id_subencuesta"] .'">'; 
-         echo '</div>';
-         echo '<button type="submit" class="btn btn-primary">Actualizar</button>'; 
-     echo '</form>';
-  
-     echo '</div>'; // Cerrar el contenedor de columna
+echo '<div class="d-flex flex-column">';
+echo '<form method="post" action="'.base_url().'admin/actualizarSubencuesta" class="form-inline">';
+    echo '<div class="form-group mb-2">';
+    echo '<label for="titulo" class="sr-only mt-2 mb-2">Título</label>';
+    echo '<input type="text" class="form-control mx-auto" id="titulo" name="titulo" value="' . $data["subencuesta"]["titulo"] . '" style="width: 50%;">';
+    echo '<label for="descripcion" class="sr-only mt-2 mb-2">Descripción</label>';
+    echo '<input type="text" class="form-control mx-auto" id="descripcion" name="descripcion" value="' . $data["subencuesta"]["descripcion"] . '" style="width: 50%;">';
+    echo '<input type="hidden" name="id_subencuesta" value="'. $data["subencuesta"]["id_subencuesta"] .'">';
+    echo '</div>';
+    echo '<button type="submit" class="btn btn-primary mx-auto">Actualizar</button>';
+echo '</form>';
+
+echo '</div>';
+
 
     ?>
 
