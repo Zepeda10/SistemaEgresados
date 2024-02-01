@@ -53,7 +53,7 @@
                 <a href="'.base_url()."admin/editarPreguntaEncuesta/".$row["id_pregunta"].'">
                     <button class="btn btn-primary">Editar</button>
                 </a>
-                <a href="'.base_url()."admin/eeliminarPreguntaEncuesta/".$row["id_pregunta"].'">
+                <a href="'.base_url()."admin/eliminarPreguntaEncuesta/".$row["id_pregunta"].'">
                     <button class="btn btn-danger">Eliminar</button>
                 </a>
                   </td>';

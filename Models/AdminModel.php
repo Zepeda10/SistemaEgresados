@@ -216,6 +216,56 @@
 
             return $request;
         }
+
+        // -------------------------- ELIMINAR --------------------------
+        public function deleteChoiceSurveys($id){
+            $query = "DELETE FROM respuestas_opciones WHERE id_respuesta = ".$id;
+            $request = $this->delete($query);
+
+            return $request; 
+        }
+
+        public function deleteChoiceSubsurveys($id){
+            $query = "DELETE FROM respuestas_opciones_subencuestas WHERE id_respuesta = ".$id;
+            $request = $this->delete($query);
+
+            return $request; 
+        }
+
+        public function deleteQuestionSurvey($id){
+            $query = "DELETE FROM preguntas WHERE id_pregunta = ".$id;
+            $request = $this->delete($query);
+
+            return $request; 
+        }
+
+        public function deleteQuestionSubsurvey($id){
+            $query = "DELETE FROM preguntas_subencuestas WHERE id_pregunta_subencuesta = ".$id;
+            $request = $this->delete($query);
+
+            return $request; 
+        }
+
+        public function deleteUser($id){
+            $query = "DELETE FROM usuarios WHERE id_usuario = ".$id;
+            $request = $this->delete($query);
+
+            return $request; 
+        }
+
+        public function deleteSurveyResponse($id){
+            $query = "DELETE FROM respuestas_usuarios_encuestas WHERE id_respuesta_usuario = ".$id;
+            $request = $this->delete($query);
+
+            return $request; 
+        }
+
+        public function deleteSubsurveyResponse($id){
+            $query = "DELETE FROM respuestas_usuarios_subencuestas WHERE id_respuesta_usuario = ".$id;
+            $request = $this->delete($query);
+
+            return $request; 
+        }
         
     }
 

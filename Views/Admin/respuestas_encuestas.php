@@ -54,8 +54,10 @@
             echo '<td>' . $row['texto_respuesta_abierta'] . '</td>';
             echo '<td>' . $row['fecha_respuesta'] . '</td>';
             echo '<td>
+                <a href="'.base_url()."admin/eliminarRespuestaEncuesta/".$row["id_respuesta_usuario"].'">
                     <button class="btn btn-danger">Eliminar</button>
-                  </td>';
+                </a>
+              </td>';
             echo '</tr>';
         }
 

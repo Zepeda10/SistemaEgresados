@@ -217,6 +217,43 @@
             $this->model->addUser($nombre,$numero,$correo,$tipo,$clave);
             header("Location: ".base_url()."admin/usuarios");
         }
+
+        // -------------------------- ELIMINAR --------------------------
+
+        public function eliminarOpcionEncuesta($id){
+            $this->model->deleteChoiceSurveys($id);
+            header("Location: ".base_url()."admin/opcionMultipleEncuesta");
+        }
+
+        public function eliminarOpcionSubencuesta($id){
+            $this->model->deleteChoiceSubsurveys($id);
+            header("Location: ".base_url()."admin/opcionMultipleSubencuesta");
+        }
+
+        public function eliminarPreguntaEncuesta($id){
+            $this->model->deleteQuestionSurvey($id);
+            header("Location: ".base_url()."admin/preguntasEncuestas");
+        }
+
+        public function eliminarPreguntaSubencuesta($id){
+            $this->model->deleteQuestionSubsurvey($id);
+            header("Location: ".base_url()."admin/preguntasSubencuestas");
+        }
+
+        public function eliminarRespuestaEncuesta($id){
+            $this->model->deleteSurveyResponse($id);
+            header("Location: ".base_url()."admin/respuestasEncuestas");
+        }
+
+        public function eliminarRespuestaSubencuesta($id){
+            $this->model->deleteSubsurveyResponse($id);
+            header("Location: ".base_url()."admin/respuestasSubencuestas");
+        }
+
+        public function eliminarUsuario($id){
+            $this->model->deleteUser($id);
+            header("Location: ".base_url()."admin/usuarios");
+        }
         
     }
 
