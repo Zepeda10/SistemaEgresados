@@ -170,6 +170,52 @@
 
             return $request;
         }
+
+        // -------------------------- AGREGAR --------------------------
+        public function addChoiceSurveys($idPregunta,$opcion,$valor){
+            $query = "INSERT INTO respuestas_opciones (id_pregunta,texto_respuesta,valor_numerico) VALUES (?,?,?)";
+
+            $arrData = array($idPregunta,$opcion,$valor);
+            $request = $this->insert($query,$arrData);
+
+            return $request;
+        }
+
+        public function addChoiceSubsurveys($idPregunta,$opcion,$valor){
+            $query = "INSERT INTO respuestas_opciones_subencuestas (id_pregunta_subencuesta,texto_respuesta,valor_numerico) VALUES (?,?,?)";
+
+            $arrData = array($idPregunta,$opcion,$valor);
+            $request = $this->insert($query,$arrData);
+
+            return $request;
+        }
+
+        public function addQuestionSurvey($idEncuesta,$tipo,$pregunta){
+            $query = "INSERT INTO preguntas (id_encuesta,tipo_pregunta,texto_pregunta) VALUES (?,?,?)";
+
+            $arrData = array($idEncuesta,$tipo,$pregunta);
+            $request = $this->insert($query,$arrData);
+
+            return $request;
+        }
+
+        public function addQuestionSubsurvey($idSubencuesta,$tipo,$pregunta){
+            $query = "INSERT INTO preguntas_subencuestas (id_subencuesta,tipo_pregunta,texto_pregunta) VALUES (?,?,?)";
+
+            $arrData = array($idSubencuesta,$tipo,$pregunta);
+            $request = $this->insert($query,$arrData);
+
+            return $request;
+        }
+
+        public function addUser($nombre,$numero,$correo,$tipo,$clave){
+            $query = "INSERT INTO usuarios (nombre,numero_estudiante,correo,tipo,clave) VALUES (?,?,?,?,?)";
+
+            $arrData = array($nombre,$numero,$correo,$tipo,$clave);
+            $request = $this->insert($query,$arrData);
+
+            return $request;
+        }
         
     }
 

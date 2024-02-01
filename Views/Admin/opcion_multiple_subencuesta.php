@@ -8,9 +8,13 @@
       <!-- Área de contenido -->
       <div class="content text-center">
       <h2 class="mb-4">Opciones Múltiples Subencuestas</h2>
-      <button class="btn btn-success float-start mb-3">Agregar</button>
     
       <?php
+
+        echo '<div class="d-flex flex-column">';
+            echo '<a href="' . base_url() . 'admin/agregarOpcionSubencuesta/"><button class="btn btn-success float-start mb-3">Agregar</button></a>';
+        echo '</div>';
+
       if (isset($data["opciones"]) && is_array($data["opciones"]) && count($data["opciones"]) > 0) {
         // Define el número de registros por página
         $registros_por_pagina = 10;

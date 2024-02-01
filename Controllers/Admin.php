@@ -155,6 +155,68 @@
             header("Location: ".base_url()."admin/usuarios");
         }
 
+        // -------------------------- AGREGAR --------------------------
+        public function agregarOpcionEncuesta(){
+            $this->views->getView($this,"agregar_opcion_multiple_encuesta");
+        }
+
+        public function guardarOpcionEncuesta(){
+            $idPregunta = $_POST["id_pregunta"];
+            $opcion = $_POST["texto_respuesta"];
+            $valor = $_POST["valor_numerico"];
+            $this->model->addChoiceSurveys($idPregunta,$opcion,$valor);
+            header("Location: ".base_url()."admin/opcionMultipleEncuesta");
+        }
+
+        public function agregarOpcionSubencuesta(){
+            $this->views->getView($this,"agregar_opcion_multiple_subencuesta",);
+        }
+
+        public function guardarOpcionSubencuesta(){
+            $idPregunta = $_POST["id_pregunta_subencuesta"];
+            $opcion = $_POST["texto_respuesta"];
+            $valor = $_POST["valor_numerico"];
+            $this->model->addChoiceSubsurveys($idPregunta,$opcion,$valor);
+            header("Location: ".base_url()."admin/opcionMultipleSubencuesta");
+        }
+
+        public function agregarPreguntaEncuesta(){
+            $this->views->getView($this,"agregar_pregunta_encuesta");
+        }
+
+        public function guardarPreguntaEncuesta(){
+            $idEncuesta = $_POST["id_encuesta"];
+            $tipo = $_POST["tipo_pregunta"];
+            $pregunta = $_POST["texto_pregunta"];
+            $this->model->addQuestionSurvey($idEncuesta,$tipo,$pregunta);
+            header("Location: ".base_url()."admin/preguntasEncuestas");
+        }
+
+        public function agregarPreguntaSubencuesta(){
+            $this->views->getView($this,"agregar_pregunta_subencuesta");
+        }
+
+        public function guardarPreguntaSubencuesta(){
+            $idSubencuesta = $_POST["id_subencuesta"];
+            $tipo = $_POST["tipo_pregunta"];
+            $pregunta = $_POST["texto_pregunta"];
+            $this->model->addQuestionSubsurvey($idSubencuesta,$tipo,$pregunta);
+            header("Location: ".base_url()."admin/preguntasSubencuestas");
+        }
+
+        public function agregarUsuario(){
+            $this->views->getView($this,"agregar_usuario");
+        }
+
+        public function guardarUsuario(){
+            $nombre = $_POST["nombre"];
+            $numero = $_POST["numero_estudiante"];
+            $correo = $_POST["correo"];
+            $tipo = $_POST["tipo"];
+            $clave = password_hash($_POST['clave'], PASSWORD_BCRYPT);
+            $this->model->addUser($nombre,$numero,$correo,$tipo,$clave);
+            header("Location: ".base_url()."admin/usuarios");
+        }
         
     }
 

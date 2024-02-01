@@ -9,9 +9,13 @@
 <!-- Área de contenido -->
 <div class="content text-center">
       <h2 class="mb-4">Preguntas Subencuestas</h2>
-      <button class="btn btn-success float-start mb-3">Agregar</button>
 
 <?php
+
+        echo '<div class="d-flex flex-column">';
+            echo '<a href="' . base_url() . 'admin/agregarPreguntaSubencuesta/"><button class="btn btn-success float-start mb-3">Agregar</button></a>';
+        echo '</div>';
+
 if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["preguntas"]) > 0) {
         // Define el número de registros por página
         $registros_por_pagina = 10;

@@ -8,7 +8,6 @@
       <!-- Área de contenido -->
       <div class="content text-center">
       <h2 class="mb-4">Respuestas Subencuestas</h2>
-      <button class="btn btn-success float-start mb-3">Agregar</button>
     
       <?php
       // Verifica si hay datos en el array "respuestas"
