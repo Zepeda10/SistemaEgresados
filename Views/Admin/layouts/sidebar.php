@@ -8,7 +8,7 @@
         <img src="<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle">
       </div>
       <div class="sidebar-menu">
-        <a class="nav-link active" href="<?php echo admin_url(); ?>encuestas">
+        <a class="nav-link" href="<?php echo admin_url(); ?>encuestas">
           Encuestas
         </a>
         <a class="nav-link" href="<?php echo admin_url(); ?>subencuestas">
@@ -26,7 +26,7 @@
         <a class="nav-link" href="<?php echo admin_url(); ?>preguntasSubencuestas">
           Preguntas subencuestas
         </a>
-        <a class="nav-link active" href="<?php echo admin_url(); ?>respuestasEncuestas">
+        <a class="nav-link" href="<?php echo admin_url(); ?>respuestasEncuestas">
           Respuestas encuestas
         </a>
         <a class="nav-link" href="<?php echo admin_url(); ?>respuestasSubencuestas">
@@ -46,12 +46,9 @@
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle" width="30" height="30">
-              Nombre de Usuario
+              Admin
             </button>
             <ul class="dropdown-menu" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li><a class="dropdown-item" href="#">Configuración</a></li>
-              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="<?php echo base_url(); ?>login/logout">Cerrar Sesión</a></li>
             </ul>
           </div>

@@ -46,12 +46,9 @@
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="../<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle" width="30" height="30">
-              Nombre de Usuario
+              Admin
             </button>
             <ul class="dropdown-menu" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li><a class="dropdown-item" href="#">Configuración</a></li>
-              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="../<?php echo base_url(); ?>login/logout">Cerrar Sesión</a></li>
             </ul>
           </div>
