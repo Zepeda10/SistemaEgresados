@@ -71,7 +71,7 @@ document.getElementById("enviar").addEventListener("click", function () {
       alert(
         "Por favor, complete todas las preguntas antes de enviar la encuesta."
       );
-      event.preventDefault();
+      preventDefault();
       return;
     }
   }
@@ -120,6 +120,9 @@ document.getElementById("enviar").addEventListener("click", function () {
     preventDefault();
     return;
   }
+
+  // Verificar la respuesta de la pregunta especial y redirigir si es necesario
+  checkAndRedirect();
 
   // Recopilar datos del formulario
   var formData = new FormData();
@@ -172,3 +175,33 @@ document.getElementById("enviar").addEventListener("click", function () {
 
 // Mostrar la primera página al cargar la página
 showPage(currentPage);
+
+// Función para verificar la respuesta de la pregunta especial y redirigir si es necesario
+function checkAndRedirect() {
+  // Selecciona el input de la pregunta de tipo "Radio" con un identificador único
+  var preguntaRadioInput = document.querySelector(
+    '#pregunta_radio_7 input[name^="respuesta[7]"]:checked'
+  );
+
+  if (preguntaRadioInput) {
+    // Obtiene el valor y el texto de la pregunta
+    var respuestaRadioValue = preguntaRadioInput.value;
+    var preguntaRadioText = document
+      .querySelector("#pregunta_radio_7 p")
+      .textContent.trim(); // Ajusta según la estructura real
+
+    // Puedes usar el valor y el texto de la pregunta como desees
+    console.log(
+      "Valor de respuesta de la pregunta Radio:",
+      respuestaRadioValue
+    );
+    console.log("Texto de pregunta Radio:", preguntaRadioText);
+  }
+
+  /*
+  if (respuestSelectValue === "14") {
+    // Redirige a la otra encuesta si la respuesta es 'azul'
+    window.location.href = "url_de_la_otra_encuesta.php";
+  }
+  */
+}

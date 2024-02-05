@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="<?php echo css_url(); ?>encuesta1.css">
 
     <!-- Sección de preguntas -->
-<form id="encuestaForm" action="../EncuestaUno/enviar" method="post">
+<form id="encuestaForm" action="../EncuestaUno/enviarr" method="post">
     <div class="container preguntas mt-5">
         <h2>Preguntas</h2>
         <div class="container mt-5">
@@ -30,13 +30,13 @@
                     }else if($question['tipo_pregunta'] == 'Selección'){
                         $id = $question['id_pregunta'];
 
-                        echo '<li class="list-group-item mb-2">
+                        echo '<li class="list-group-item mb-2" id="pregunta_seleccion_' . $id . '">
                                 <p>' . $question['texto_pregunta'] . '</p>
-                                <input type="hidden" name="pregunta_id[]" value='.$question['id_pregunta'].'>
+                                <input type="hidden" name="pregunta_id[]" value='.$id.'>
                                 <input type="hidden" name="tipo_pregunta[]" value="cerrada">
                                 <div class="col-2">';
 
-                        echo '<select class="form-select" name="respuesta[' . $question['id_pregunta'] . '][]">';
+                        echo '<select class="form-select" name="respuesta[' . $id . '][]">';
 
                         $filteredData = array_filter($data['close_answers'], function ($element) use ($id) {
                             return filterByAttributeValue($element, $id);
@@ -54,9 +54,9 @@
                         
                         $id = $question['id_pregunta'];
 
-                        echo '<li class="list-group-item mb-2">
+                        echo '<li class="list-group-item mb-2" id="pregunta_radio_' . $id . '">
                                 <p>' . $question['texto_pregunta'] . '</p>
-                                <input type="hidden" name="pregunta_id[]" value='.$question['id_pregunta'].'>
+                                <input type="hidden" name="pregunta_id[]" value='.$id.'>
                                 <input type="hidden" name="tipo_pregunta[]" value="cerrada">
                                 ';
                     
@@ -65,7 +65,7 @@
                         });
                     
                         foreach ($filteredData as $element) {
-                            echo '<input type="radio" name="respuesta[' . $question['id_pregunta'] . '][]" value="' . $element['id_respuesta'] . '"> ' . $element['texto_respuesta'] . '<br>';
+                            echo '<input type="radio" name="respuesta[' . $id . '][]" value="' . $element['id_respuesta'] . '"> ' . $element['texto_respuesta'] . '<br>';
                         }
                     
                         echo '</li>';
@@ -73,7 +73,7 @@
                     }else if($question['tipo_pregunta'] == 'Checkbox'){
                         $id = $question['id_pregunta'];
 
-                        echo '<li class="list-group-item mb-2">
+                        echo '<li class="list-group-item mb-2" id="pregunta_checkbox_' . $id . '">
                                 <p>' . $question['texto_pregunta'] . '</p>
                                 <input type="hidden" name="tipo_pregunta[]" value="cerrada">
                                 ';
@@ -82,22 +82,16 @@
                             return filterByAttributeValue($element, $id);
                         });
 
-                        /*
-                        foreach ($filteredData as $element) {
-                            echo '<input type="checkbox" name="respuesta[]" value="' . $element['texto_respuesta'] . '"> ' . $element['texto_respuesta'] . '<br>';
-                        }
-                        */
-
                         foreach ($filteredData as $element) {
                             $checkboxValue = $element['texto_respuesta'];
                             $checkboxId = $element['id_respuesta'];
                             $checkboxID = $element['id_respuesta']; // Suponiendo que existe un campo 'id_respuesta' en tus datos
                     
-                            echo '<input type="checkbox" class="checkbox" name="respuesta[' . $question['id_pregunta'] . '][]" value="' . $checkboxId . '"> ' . $checkboxValue . '<br>';
+                            echo '<input type="checkbox" class="checkbox" name="respuesta[' . $id . '][]" value="' . $checkboxId . '"> ' . $checkboxValue . '<br>';
                     
                             // Agrega un campo oculto por cada checkbox seleccionado
                             if (isset($_POST['respuesta']) && in_array($checkboxValue, $_POST['respuesta'])) {
-                                echo '<input type="hidden" class="selected-checkboxes" name="pregunta_id[]" value='.$question['id_pregunta'].'>';     
+                                echo '<input type="hidden" class="selected-checkboxes" name="pregunta_id[]" value='.$id.'>';     
                             }
                         }
 

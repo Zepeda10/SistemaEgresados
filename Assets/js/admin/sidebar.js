@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Iteramos sobre cada enlace y comparamos si la URL actual contiene la URL del enlace
   sidebarLinks.forEach(function (link) {
     var normalizedLink = link.href.split("?")[0]; // Eliminar parámetros de consulta del enlace
-    console.log("EOO: " + normalizedLink);
 
     if (currentUrl.includes(normalizedLink)) {
       // Agregamos una clase de resaltado al enlace activo
