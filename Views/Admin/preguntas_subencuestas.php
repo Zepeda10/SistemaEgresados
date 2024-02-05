@@ -37,7 +37,7 @@ if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["pr
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Subncuesta</th>
+                    <th scope="col">Subencuesta</th>
                     <th scope="col">Tipo de pregunta</th>
                     <th scope="col">Pregunta</th>
                     <th scope="col">Acciones</th>

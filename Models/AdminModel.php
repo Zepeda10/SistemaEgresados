@@ -6,7 +6,23 @@
             parent::__construct();
         }
 
-        // ---------------- MOSTRAR DATOS EN FRONT ----------------------
+        // ---------------- AUXILIARES ----------------------
+        public function getQuestionsBySurvey($id){
+            $query = "SELECT id_pregunta, texto_pregunta FROM preguntas WHERE id_encuesta = $id";
+            $request = $this->select_all($query);
+
+            return $request;
+        } 
+
+        public function getQuestionsBySubsurvey($id){
+            $query = "SELECT id_pregunta_subencuesta, texto_pregunta FROM preguntas_subencuestas WHERE id_subencuesta = $id";
+            $request = $this->select_all($query);
+
+            return $request;
+        } 
+
+
+        // ---------------- MOSTRAR DATOS EN VISTAS ----------------------
 
         public function getAllHeaderSurveys(){
             $query = "SELECT * FROM encuestas_principales";
@@ -23,14 +39,14 @@
         }
 
         public function getAllmultipleChoiceSurveys(){
-            $query = "SELECT * FROM respuestas_opciones";
+            $query = "SELECT r.id_respuesta, p.texto_pregunta, r.texto_respuesta, r.valor_numerico FROM respuestas_opciones r INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta";
             $request = $this->select_all($query);
 
             return $request;
         }
 
         public function getAllmultipleChoiceSubsurveys(){
-            $query = "SELECT * FROM respuestas_opciones_subencuestas";
+            $query = "SELECT r.id_respuesta, p.texto_pregunta, r.texto_respuesta, r.valor_numerico FROM respuestas_opciones_subencuestas r INNER JOIN preguntas_subencuestas p ON r.id_pregunta_subencuesta = p.id_pregunta_subencuesta";
             $request = $this->select_all($query);
 
             return $request;
@@ -51,14 +67,16 @@
         }
 
         public function getAllSurveysResponses(){
-            $query = "SELECT * FROM respuestas_usuarios_encuestas";
+            $query = "SELECT r.id_respuesta_usuario, u.numero_estudiante, r.id_encuesta, p.texto_pregunta, o.texto_respuesta AS 'opcion', r.texto_respuesta_abierta, r.fecha_respuesta FROM respuestas_usuarios_encuestas r 
+            INNER JOIN usuarios u ON r.id_usuario = u.id_usuario INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta LEFT JOIN respuestas_opciones o ON r.id_respuesta_opciones = o.id_respuesta ORDER BY r.id_respuesta_usuario ASC";
             $request = $this->select_all($query);
 
             return $request;
         }
 
         public function getAllSubsurveysResponses(){
-            $query = "SELECT * FROM respuestas_usuarios_subencuestas";
+            $query = "SELECT r.id_respuesta_usuario, u.numero_estudiante, r.id_subencuesta, p.texto_pregunta, o.texto_respuesta AS 'opcion', r.texto_respuesta_abierta, r.fecha_respuesta FROM respuestas_usuarios_subencuestas r 
+            INNER JOIN usuarios u ON r.id_usuario = u.id_usuario INNER JOIN preguntas_subencuestas p ON r.id_pregunta = p.id_pregunta_subencuesta LEFT JOIN respuestas_opciones_subencuestas o ON r.id_respuesta_opciones = o.id_respuesta ORDER BY r.id_respuesta_usuario ASC";
             $request = $this->select_all($query);
 
             return $request;

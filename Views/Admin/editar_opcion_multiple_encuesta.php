@@ -13,7 +13,12 @@
          echo '<div class="form-group mb-2">';
          
          echo '<label for="id_pregunta" class="sr-only mt-2 mb-2">Pregunta</label>';
-         echo '<input type="text" class="form-control mx-auto" id="id_pregunta" name="id_pregunta" value="' . $data["opcion"]["id_pregunta"] . '" style="width: 50%;">';
+        echo '<select class="form-control mx-auto" id="id_pregunta" name="id_pregunta" style="width: 50%;">';
+        // Generar las opciones del select
+        foreach ($data['preguntas'] as $opcion) {
+            echo '<option value="' . $opcion['id_pregunta'] . '">' . $opcion['texto_pregunta'] . '</option>';
+        }
+        echo '</select>';
      
          echo '<label for="texto_respuesta" class="sr-only mt-2 mb-2">Opción</label>';
          echo '<input type="text" class="form-control mx-auto" id="texto_respuesta" name="texto_respuesta" value="' . $data["opcion"]["texto_respuesta"] . '" style="width: 50%;">';

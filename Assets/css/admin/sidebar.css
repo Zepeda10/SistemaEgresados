@@ -1,0 +1,5 @@
+.sidebar-menu a.active-link {
+  background-color: #343a40;
+  color: #ffffff;
+  font-weight: bold;
+}

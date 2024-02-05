@@ -86,6 +86,7 @@
 
         public function editarOpcionEncuesta($id){
             $data["opcion"] = $this->model->getOneChoiceSurveys($id);
+            $data['preguntas'] = $this->model->getQuestionsBySurvey(1);
             $this->views->getView($this,"editar_opcion_multiple_encuesta",$data);
         }
 
@@ -100,6 +101,7 @@
 
         public function editarOpcionSubencuesta($id){
             $data["opcion"] = $this->model->getOneChoiceSubsurveys($id);
+            $data['preguntas'] = $this->model->getQuestionsBySubsurvey(1);
             $this->views->getView($this,"editar_opcion_multiple_subencuesta",$data);
         }
 
@@ -157,7 +159,8 @@
 
         // -------------------------- AGREGAR --------------------------
         public function agregarOpcionEncuesta(){
-            $this->views->getView($this,"agregar_opcion_multiple_encuesta");
+            $data['preguntas'] = $this->model->getQuestionsBySurvey(1);
+           $this->views->getView($this,"agregar_opcion_multiple_encuesta",$data);
         }
 
         public function guardarOpcionEncuesta(){
@@ -169,7 +172,8 @@
         }
 
         public function agregarOpcionSubencuesta(){
-            $this->views->getView($this,"agregar_opcion_multiple_subencuesta",);
+            $data['preguntas'] = $this->model->getQuestionsBySubsurvey(1);
+            $this->views->getView($this,"agregar_opcion_multiple_subencuesta",$data);
         }
 
         public function guardarOpcionSubencuesta(){

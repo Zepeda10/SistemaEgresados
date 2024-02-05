@@ -47,7 +47,7 @@
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
             echo '<td>' . $row['id_respuesta'] . '</td>';
-            echo '<td>' . $row['id_pregunta'] . '</td>';
+            echo '<td>' . $row['texto_pregunta'] . '</td>';
             echo '<td>' . $row['texto_respuesta'] . '</td>';
             echo '<td>' . $row['valor_numerico'] . '</td>';
             echo '<td>

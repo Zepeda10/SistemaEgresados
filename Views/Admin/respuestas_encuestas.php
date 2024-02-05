@@ -47,10 +47,10 @@
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
             echo '<td>' . $row['id_respuesta_usuario'] . '</td>';
-            echo '<td>' . $row['id_usuario'] . '</td>';
+            echo '<td>' . $row['numero_estudiante'] . '</td>';
             echo '<td>' . $row['id_encuesta'] . '</td>';
-            echo '<td>' . $row['id_pregunta'] . '</td>';
-            echo '<td>' . $row['id_respuesta_opciones'] . '</td>';
+            echo '<td>' . $row['texto_pregunta'] . '</td>';
+            echo '<td>' . $row['opcion'] . '</td>';
             echo '<td>' . $row['texto_respuesta_abierta'] . '</td>';
             echo '<td>' . $row['fecha_respuesta'] . '</td>';
             echo '<td>
