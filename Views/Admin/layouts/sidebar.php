@@ -4,9 +4,12 @@
   <div class="row">
     <!-- Barra lateral -->
     <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
-      <div class="text-center">
-        <img src="<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle">
-      </div>
+    <div class="text-center">
+        <a href="<?php echo admin_url(); ?>inicio">
+            <img src="<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle">
+        </a>
+    </div>
+
       <div class="sidebar-menu">
         <a class="nav-link" href="<?php echo admin_url(); ?>encuestas">
           Encuestas
