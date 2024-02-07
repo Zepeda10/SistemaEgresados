@@ -5,7 +5,9 @@
     <!-- Barra lateral -->
     <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
       <div class="text-center">
-        <img src="../<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle">
+      <a href="<?php echo admin_url(); ?>inicio">
+            <img src="../<?php echo images_url(); ?>admin.png" alt="Mini Foto Usuario" class="rounded-circle">
+        </a>
       </div>
       <div class="sidebar-menu">
         <a class="nav-link active" href="<?php echo admin_url(); ?>encuestas">

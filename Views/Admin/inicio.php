@@ -8,7 +8,7 @@
       <!-- Área de contenido -->
       <div class="content text-center">
         <h2>Bienvenido al Panel de Administración</h2>
-        <p>Este es un mensaje de bienvenida centrado.</p>
+        <img src="<?php echo images_url(); ?>apoyo.png" class="img-fluid mt-4" alt="Imagen de bienvenida">
       </div>
     </main>
   </div>
