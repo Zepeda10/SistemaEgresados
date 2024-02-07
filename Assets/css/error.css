@@ -1,0 +1,12 @@
+body {
+  background-color: #f8f9fa;
+}
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.error-text {
+  font-size: 2rem;
+}
