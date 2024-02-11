@@ -10,6 +10,24 @@
       <h2 class="mb-4">Respuestas Subencuestas</h2>
     
       <?php
+
+      
+echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
+'<form class="d-flex col-md-8" id="searchForm">' 
+.
+    '<select id="filtroEncuesta" class="form-select me-2" style="width: 120px;">' .
+        '<option value="">Encuesta</option>' .
+        '<option value="1">Subencuesta 1</option>' .
+        '<option value="2">Subencuesta 2</option>' .
+        '<option value="3">subencuesta 3</option>' .
+    '</select>' 
+    .
+    '<input type="text" class="form-control flex-grow-1 me-2" id="filtroUsuario" style="width: 180px;" placeholder="Buscar usuario" />'  .
+
+    '<input type="text" class="form-control flex-grow-1" id="filtroPregunta" style="width: 180px;" placeholder="Buscar pregunta" />' .
+'</form>' .
+'</div>';
+
       // Verifica si hay datos en el array "respuestas"
     if (isset($data["respuestas"]) && is_array($data["respuestas"]) && count($data["respuestas"]) > 0) {
         // Define el número de registros por página
@@ -119,3 +137,6 @@
 <?php   
     include ("Layouts/footer.php");
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<?php echo js_url(); ?>admin/buscarRespuestaEncuestas.js"></script>

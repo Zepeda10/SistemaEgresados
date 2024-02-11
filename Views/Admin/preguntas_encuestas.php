@@ -9,10 +9,32 @@
       <div class="content text-center">
       <h2 class="mb-4">Agregar Pregunta Encuesta</h2>
     
+      <div id="tablaContenedor">
       <?php
-        echo '<div class="d-flex flex-column">';
-            echo '<a href="' . base_url() . 'admin/agregarPreguntaEncuesta/"><button class="btn btn-success float-start mb-3">Agregar</button></a>';
-        echo '</div>';
+        echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
+        '<a href="' . base_url() . 'admin/agregarPreguntaEncuesta/"><button class="btn btn-success float-start mb-3">Agregar</button></a>' .
+
+        '<form class="d-flex col-md-8" id="searchForm">' 
+        .
+            '<select id="filtroEncuesta" class="form-select me-2" style="width: 120px;">' .
+                '<option value="">Encuesta</option>' .
+                '<option value="1">Encuesta 1</option>' .
+                '<option value="2">Encuesta 2</option>' .
+                '<option value="3">Encuesta 3</option>' .
+            '</select>' 
+            .
+            '<select id="filtroTipo" class="form-select me-2" style="width: 120px;">' .
+                '<option value="">Tipo</option>' .
+                '<option value="Abierta">Abierta</option>' .
+                '<option value="Selección">Selección</option>' .
+                '<option value="Radio">Radio</option>' .
+                '<option value="Checkbox">Checkbox</option>' .
+            '</select>' .
+
+            '<input type="text" class="form-control flex-grow-1" id="filtroPregunta" style="width: 180px;" placeholder="Buscar pregunta" />' .
+        '</form>' .
+    '</div>';
+
 
       if (isset($data["preguntas"]) && is_array($data["preguntas"]) && count($data["preguntas"]) > 0) {
         // Define el número de registros por página
@@ -106,6 +128,7 @@
     </table>';
     }
     ?>
+    </div>
 
       </div>
     </main>
@@ -115,3 +138,7 @@
 <?php   
     include ("Layouts/footer.php");
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<?php echo js_url(); ?>admin/buscarPreguntaEncuestas.js"></script>
+
