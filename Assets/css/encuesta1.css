@@ -3,20 +3,20 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  position: relative; /* Añadido para que los botones relativos al cuerpo se posicionen correctamente */
+  position: relative;
 }
 
 /* Centrar botones siguiente regresar */
 .botones {
   text-align: center;
   position: absolute;
-  bottom: 80px; /* Fijar en la parte inferior */
-  left: 0; /* Opcional: Alinear a la izquierda */
-  right: 0; /* Opcional: Alinear a la derecha */
-  background-color: #333; /* Color de fondo de los botones (ajusta según tus necesidades) */
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  background-color: #333;
   padding: 10px;
-  color: #fff; /* Color de texto de los botones (ajusta según tus necesidades) */
-  z-index: 1; /* Valor superior para asegurarse de que esté por encima del contenido */
+  color: #fff;
+  z-index: 1;
 }
 
 .preguntas {
@@ -28,6 +28,10 @@ body {
   ); /* Fondo semi-transparente blanco */
   padding: 20px;
   border-radius: 10px;
+  max-height: 550px; /* Tamaño para agregar barra vertical */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  border-right: 2px solid #ddd; /* Agrega una barra vertical */
+  padding-right: 15px;
 }
 
 footer {
@@ -36,5 +40,5 @@ footer {
   color: #fff;
   padding: 10px;
   text-align: center;
-  z-index: 0; /* Valor inferior para que esté detrás de los botones */
+  z-index: 0;
 }

@@ -10,7 +10,7 @@ const prevContainer = document.getElementById("anterior-container");
 
 // Configuramos el estado inicial
 let currentPage = 1;
-const itemsPerPage = 3; // Número de elementos por página
+const itemsPerPage = 5; // Número de elementos por página
 
 // Muestra los elementos de la página actual
 function showPage(page) {
@@ -64,65 +64,84 @@ nextButton.addEventListener("click", () => {
 });
 
 // Validar que todos los campos estén llenos antes de enviar la encuesta
-document.getElementById("enviar").addEventListener("click", function () {
+document.getElementById("enviar").addEventListener("click", function (event) {
   var openfields = document.querySelectorAll(".form-control");
-  for (var i = 0; i < openfields.length; i++) {
-    if (openfields[i].value.trim() === "") {
-      alert(
-        "Por favor, complete todas las preguntas antes de enviar la encuesta."
-      );
-      preventDefault();
-      return;
+
+  if (openfields.length > 0) {
+    for (var i = 0; i < openfields.length; i++) {
+      if (openfields[i].value.trim() === "") {
+        alert(
+          "Por favor, complete todas las preguntas antes de enviar la encuesta."
+        );
+        event.preventDefault();
+        return;
+      }
     }
   }
 
   var selectionFields = document.querySelectorAll(".form-select");
-  for (var j = 0; j < selectionFields.length; j++) {
-    if (selectionFields[j].value === "") {
-      alert(
-        "Por favor, complete todas las preguntas antes de enviar la encuesta."
-      );
-      preventDefault();
-      return;
+
+  if (selectionFields.length > 0) {
+    for (var j = 0; j < selectionFields.length; j++) {
+      if (selectionFields[j].value === "") {
+        alert(
+          "Por favor, complete todas las preguntas antes de enviar la encuesta."
+        );
+        event.preventDefault();
+        return;
+      }
     }
   }
 
   var radioFields = document.querySelectorAll('input[type="radio"]');
-  var radioSelect = false;
-  for (var k = 0; k < radioFields.length; k++) {
-    if (radioFields[k].checked) {
-      radioSelect = true;
-      break;
-    }
-  }
 
-  if (!radioSelect) {
-    alert(
-      "Por favor, complete todas las preguntas antes de enviar la encuesta."
-    );
-    preventDefault();
-    return;
+  if (radioFields.length > 0) {
+    var radioGroups = {}; // Objeto para almacenar grupos de radios
+
+    radioFields.forEach(function (radio) {
+      // Agrupar los radios por su nombre
+      if (!radioGroups[radio.name]) {
+        radioGroups[radio.name] = [];
+      }
+      radioGroups[radio.name].push(radio);
+    });
+
+    // Validar cada grupo de radio
+    for (var groupName in radioGroups) {
+      var group = radioGroups[groupName];
+      var groupChecked = group.some(function (radio) {
+        return radio.checked;
+      });
+
+      if (!groupChecked) {
+        alert(
+          "Por favor, complete todas las preguntas antes de enviar la encuesta."
+        );
+        event.preventDefault();
+        return;
+      }
+    }
   }
 
   var checkFields = document.querySelectorAll('input[type="checkbox"]');
   var atLeastOne = false;
-  for (var l = 0; l < checkFields.length; l++) {
-    if (checkFields[l].checked) {
-      atLeastOne = true;
-      break;
+
+  if (checkFields.length > 0) {
+    for (var l = 0; l < checkFields.length; l++) {
+      if (checkFields[l].checked) {
+        atLeastOne = true;
+        break;
+      }
+    }
+
+    if (!atLeastOne) {
+      alert(
+        "Por favor, complete todas las preguntas antes de enviar la encuesta."
+      );
+      event.preventDefault();
+      return;
     }
   }
-
-  if (!atLeastOne) {
-    alert(
-      "Por favor, complete todas las preguntas antes de enviar la encuesta."
-    );
-    preventDefault();
-    return;
-  }
-
-  // Verificar la respuesta de la pregunta especial y redirigir si es necesario
-  checkAndRedirect();
 
   // Recopilar datos del formulario
   var formData = new FormData();
@@ -175,33 +194,3 @@ document.getElementById("enviar").addEventListener("click", function () {
 
 // Mostrar la primera página al cargar la página
 showPage(currentPage);
-
-// Función para verificar la respuesta de la pregunta especial y redirigir si es necesario
-function checkAndRedirect() {
-  // Selecciona el input de la pregunta de tipo "Radio" con un identificador único
-  var preguntaRadioInput = document.querySelector(
-    '#pregunta_radio_7 input[name^="respuesta[7]"]:checked'
-  );
-
-  if (preguntaRadioInput) {
-    // Obtiene el valor y el texto de la pregunta
-    var respuestaRadioValue = preguntaRadioInput.value;
-    var preguntaRadioText = document
-      .querySelector("#pregunta_radio_7 p")
-      .textContent.trim(); // Ajusta según la estructura real
-
-    // Puedes usar el valor y el texto de la pregunta como desees
-    console.log(
-      "Valor de respuesta de la pregunta Radio:",
-      respuestaRadioValue
-    );
-    console.log("Texto de pregunta Radio:", preguntaRadioText);
-  }
-
-  /*
-  if (respuestSelectValue === "14") {
-    // Redirige a la otra encuesta si la respuesta es 'azul'
-    window.location.href = "url_de_la_otra_encuesta.php";
-  }
-  */
-}

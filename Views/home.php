@@ -6,7 +6,6 @@
 
 
 <body>
-<a href="<?php echo base_url(); ?>home/cerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</a>
 
     <div class="container contenido">
     

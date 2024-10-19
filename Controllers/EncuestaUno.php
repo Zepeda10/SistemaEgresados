@@ -9,6 +9,7 @@
         public function preguntas(){
             $data['questions'] = $this->model->getAllQuestions();
             $data['close_answers'] = $this->model->getAllCloseAnswers();
+            $data['tittle'] = $this->model->getTitle(1);
             $this->views->getView($this,"encuesta_uno",$data);
         }
 
@@ -21,17 +22,6 @@
             $i = 0;
 
             echo "enviar...";
-
-            /*
-            foreach ($answers as $answerId => $allAnswers) {
-                foreach ($allAnswers as $answer) {
-                    //$this->model->addUsersAnswers($quizId, $answerId, $answerIdOpc, $answer);
-                    echo "<br>";
-                    echo $quizId . " - " . $answerId . " - " .$answerIdOpc. " - " . $answer;
-                    echo "<br>";
-                }
-            }
-            */
 
             foreach ($answers as $answerId => $allAnswers){
                 $tipo_pregunta = $answerType[$i];

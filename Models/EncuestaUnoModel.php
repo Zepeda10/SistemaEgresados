@@ -29,6 +29,18 @@
             return $request;
         }
 
+        public function getTitle($id){
+            $query = "SELECT titulo_encuesta FROM encuestas_principales WHERE id_encuesta = $id";
+            $request = $this->select($query);
+
+            // Verificar si el resultado es válido y retornar el campo 'titulo_encuesta'
+            if ($request && isset($request['titulo_encuesta'])) {
+                return $request['titulo_encuesta']; 
+            }
+
+            return null; // Retorna null si no se encuentra el título
+        }
+
 
         
         // EXTRAS...

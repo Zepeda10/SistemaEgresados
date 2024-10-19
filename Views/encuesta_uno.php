@@ -5,11 +5,13 @@
     <link rel="stylesheet" href="<?php echo css_url(); ?>encuesta1.css">
 
     <!-- Sección de preguntas -->
-<form id="encuestaForm" action="../EncuestaUno/enviarr" method="post">
-    <div class="container preguntas mt-5">
-        <h2>Preguntas</h2>
-        <div class="container mt-5">
-        <h3>Sección 1</h3>
+<form id="encuestaForm" action="../EncuestaUno/enviar" method="post">
+<div class="container">
+    <h3>
+        <?php echo $data['tittle']?>
+    </h3>
+        
+    <div class="preguntas mt-5">  
         <ol class="list-group list-group-numbered" id="elementos-preguntas">
             <?php
                 // Define la función de callback para el filtro
@@ -85,7 +87,6 @@
                         foreach ($filteredData as $element) {
                             $checkboxValue = $element['texto_respuesta'];
                             $checkboxId = $element['id_respuesta'];
-                            $checkboxID = $element['id_respuesta']; // Suponiendo que existe un campo 'id_respuesta' en tus datos
                     
                             echo '<input type="checkbox" class="checkbox" name="respuesta[' . $id . '][]" value="' . $checkboxId . '"> ' . $checkboxValue . '<br>';
                     
@@ -102,7 +103,7 @@
             ?>            
         </ol>
     </div>
-    </div>
+</div>
 
     <!-- Botones al final -->
     <div class="container mt-3 botones">

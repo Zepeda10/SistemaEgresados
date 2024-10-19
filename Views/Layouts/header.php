@@ -8,3 +8,5 @@
     <!-- Enlaza el archivo CSS de Bootstrap -->
     <link rel="stylesheet" href="<?php echo css_url(); ?>boostrap-css/bootstrap.min.css">
 </head>
+
+<a href="<?php echo base_url(); ?>home/cerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</a>
