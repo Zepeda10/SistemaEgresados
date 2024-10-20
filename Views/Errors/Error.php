@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Error 404 - Página no encontrada</title>
-  <link rel="stylesheet" href="<?php echo css_url(); ?>boostrap-css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo css_url(); ?>error.css">
+  <link rel="stylesheet" href="../<?php echo css_url(); ?>boostrap-css/bootstrap.min.css">
+  <link rel="stylesheet" href="../<?php echo css_url(); ?>error.css">
 </head>
 <body>
 
