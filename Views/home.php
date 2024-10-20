@@ -22,7 +22,7 @@
 
 
 
-        <a href="<?php echo base_url(); ?>EncuestaUno/preguntas" class="btn btn-primary">¡Inicar encuesta!</a>
+        <a href="<?php echo base_url(); ?>EncuestaUno/preguntas/1" class="btn btn-primary">¡Inicar encuesta!</a>
 
     </div>
 </body>

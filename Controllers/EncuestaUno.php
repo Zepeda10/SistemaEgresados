@@ -6,22 +6,21 @@
             parent::__construct();
         }
 
-        public function preguntas(){
-            $data['questions'] = $this->model->getAllQuestions();
+        public function preguntas($id){
+            $data['questions'] = $this->model->getAllQuestions($id);
             $data['close_answers'] = $this->model->getAllCloseAnswers();
-            $data['tittle'] = $this->model->getTitle(1);
+            $data['tittle'] = $this->model->getTitle($id);
+            $data['id_quiz'] = $id;
             $this->views->getView($this,"encuesta_uno",$data);
         }
 
         public function enviar(){
             $answers = $_POST["respuesta"];
             $ids = $_POST["pregunta_id"];
-            $quizId = 1;
+            $quizId = isset($_GET['id']) ? (int)$_GET['id'] : 1;
             $answerType = $_POST["tipo_pregunta"];
             $userId = 1; // hardcodeado
             $i = 0;
-
-            echo "enviar...";
 
             foreach ($answers as $answerId => $allAnswers){
                 $tipo_pregunta = $answerType[$i];
@@ -39,6 +38,11 @@
                     
                 }
             }
+
+            $nextQuizId = $quizId + 1;
+
+            header("Location: /SistemaEgresados/EncuestaUno/preguntas/" . $nextQuizId);
+            exit(); 
 
         }
        

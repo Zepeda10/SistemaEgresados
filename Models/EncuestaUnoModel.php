@@ -6,8 +6,8 @@
             parent::__construct();
         }
 
-        public function getAllQuestions(){
-            $query = "SELECT * from preguntas WHERE id_encuesta = 1";
+        public function getAllQuestions($id){
+            $query = "SELECT * from preguntas WHERE id_encuesta = $id";
             $request = $this->select_all($query);
 
             return $request;
