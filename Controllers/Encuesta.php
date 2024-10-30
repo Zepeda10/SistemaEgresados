@@ -1,6 +1,6 @@
 <?php 
 
-    class EncuestaUno extends Controllers{
+    class Encuesta extends Controllers{
         
         public function __construct(){
             parent::__construct();
@@ -11,7 +11,7 @@
             $data['close_answers'] = $this->model->getAllCloseAnswers();
             $data['tittle'] = $this->model->getTitle($id);
             $data['id_quiz'] = $id;
-            $this->views->getView($this,"encuesta_uno",$data);
+            $this->views->getView($this,"encuesta",$data);
         }
 
         public function enviar(){
@@ -41,7 +41,7 @@
 
             $nextQuizId = $quizId + 1;
 
-            header("Location: /SistemaEgresados/EncuestaUno/preguntas/" . $nextQuizId);
+            header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId);
             exit(); 
 
         }

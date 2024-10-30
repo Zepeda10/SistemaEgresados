@@ -1,6 +1,6 @@
 <?php 
 
-    class EncuestaUnoModel extends MySQL{
+    class EncuestaModel extends MySQL{
 
         public function __construct(){
             parent::__construct();

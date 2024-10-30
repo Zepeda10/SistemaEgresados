@@ -178,7 +178,7 @@ document.getElementById("enviar").addEventListener("click", function (event) {
 
   // Realizar la solicitud AJAX
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "../EncuestaUno/enviar", true);
+  xhr.open("POST", "../Encuesta/enviar", true);
   xhr.onload = function () {
     if (xhr.status === 200) {
       // Manejar la respuesta del servidor

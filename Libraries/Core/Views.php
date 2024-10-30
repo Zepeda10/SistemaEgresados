@@ -11,7 +11,7 @@
             }else if($controller == "login"){
                 $view = VIEWS.$view.".php";
 
-            }else if($controller == "EncuestaUno"){
+            }else if($controller == "Encuesta"){
                 $view = VIEWS.$view.".php";
 
             }else if($controller == "inicio"){

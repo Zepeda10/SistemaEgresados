@@ -2,10 +2,10 @@
     include ("Layouts/header_encuestas.php");
 ?>
 
-    <link rel="stylesheet" href="../<?php echo css_url(); ?>encuesta1.css">
+    <link rel="stylesheet" href="../<?php echo css_url(); ?>encuesta.css">
 
     <!-- Sección de preguntas -->
-<form id="encuestaForm" action="../../EncuestaUno/enviar?id=<?php echo $data['id_quiz']; ?>" method="post">
+<form id="encuestaForm" action="../../Encuesta/enviar?id=<?php echo $data['id_quiz']; ?>" method="post">
 <div class="container">
     <h3>
         <?php echo $data['tittle']?>
