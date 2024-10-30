@@ -41,7 +41,7 @@
 
             $nextQuizId = $quizId + 1;
 
-            header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId);
+            header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId. "&status=success");
             exit(); 
 
         }

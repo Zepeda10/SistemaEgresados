@@ -4,9 +4,18 @@
 
     <link rel="stylesheet" href="../<?php echo css_url(); ?>encuesta.css">
 
-    <!-- Sección de preguntas -->
-<form id="encuestaForm" action="../../Encuesta/enviar?id=<?php echo $data['id_quiz']; ?>" method="post">
+
 <div class="container">
+
+<?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Encuesta <?php echo $data['id_quiz']; ?> enviada correctamente.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+
+        <!-- Sección de preguntas -->
+<form id="encuestaForm" action="../../Encuesta/enviar?id=<?php echo $data['id_quiz']; ?>&status=success" method="post">
     <h3>
         <?php echo $data['tittle']?>
     </h3>
