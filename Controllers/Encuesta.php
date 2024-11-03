@@ -30,10 +30,10 @@
 
                     if($tipo_pregunta == "abierta"){
                          $this->model->addUsersAnswers($userId, $quizId, $answerId, NULL, $answer);
-                        // echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - abierta <br>";
+                        echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - abierta <br>";
                     }else{
                          $this->model->addUsersAnswers($userId, $quizId, $answerId, $answer, NULL);
-                        // echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - cerrada <br>";
+                        echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - cerrada <br>";
                     }
                     
                 }
@@ -41,8 +41,8 @@
 
             $nextQuizId = $quizId + 1;
 
-            header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId. "&status=success");
-            exit(); 
+            //header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId. "&status=success");
+            //exit(); 
 
         }
        

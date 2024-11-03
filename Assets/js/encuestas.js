@@ -64,8 +64,11 @@ nextButton.addEventListener("click", () => {
 });
 
 // Validar que todos los campos estén llenos antes de enviar la encuesta
+
 document.getElementById("enviar").addEventListener("click", function (event) {
+  /*
   var openfields = document.querySelectorAll(".form-control");
+
 
   if (openfields.length > 0) {
     for (var i = 0; i < openfields.length; i++) {
@@ -142,6 +145,7 @@ document.getElementById("enviar").addEventListener("click", function (event) {
       return;
     }
   }
+  */
 
   // Recopilar datos del formulario
   var formData = new FormData();

@@ -10,7 +10,7 @@
     <!-- Enlaza el archivo CSS de header_encuestas -->
     <link rel="stylesheet" href="../<?php echo css_url(); ?>header_encuestas.css">
     <link rel="stylesheet" href="../<?php echo css_url(); ?>footer_encuestas.css">
-    <script src="../<?php echo js_url(); ?>validarEncuestaLaboral.js"></script>
+    
 </head>
 
 <body>
