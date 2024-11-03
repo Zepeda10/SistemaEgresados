@@ -41,8 +41,10 @@
 
             $nextQuizId = $quizId + 1;
 
-            //header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId. "&status=success");
-            //exit(); 
+            echo json_encode(['id_quiz' => $data['id_quiz']]);
+
+            header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId. "&status=success");
+            exit(); 
 
         }
        

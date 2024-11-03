@@ -187,10 +187,10 @@ document.getElementById("enviar").addEventListener("click", function (event) {
     if (xhr.status === 200) {
       // Manejar la respuesta del servidor
       console.log(xhr.responseText);
+      const idQuiz = response.id_quiz;
       alert("Formulario enviado exitosamente.");
       // Redirigir a la URL con ?status=success
-      window.location.href =
-        "../../Encuesta/preguntas?id=<?php echo $data['id_quiz']; ?>&status=success";
+      window.location.href = `../../Encuesta/preguntas?id=${idQuiz}&status=success`;
     } else {
       // Manejar errores de la solicitud
       console.error("Error en la solicitud AJAX: " + xhr.status);
