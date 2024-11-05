@@ -12,17 +12,14 @@
      echo '<form method="post" action="'.base_url().'admin/actualizarUsuario" class="form-inline">';
          echo '<div class="form-group mb-2">';
         
-         echo '<label for="nombre" class="sr-only mt-2 mb-2">Nombre completo</label>';
-         echo '<input type="text" class="form-control mx-auto" id="nombre" name="nombre" value="' . $data["usuario"]["nombre"] . '" style="width: 50%;">';
+         echo '<label for="nombre_completo" class="sr-only mt-2 mb-2">Nombre completo</label>';
+         echo '<input type="text" class="form-control mx-auto" id="nombre_completo" name="nombre_completo" value="' . $data["usuario"]["nombre_completo"] . '" style="width: 50%;">';
  
-         echo '<label for="numero_estudiante" class="sr-only mt-2 mb-2">No. estudiante</label>';
-         echo '<input type="text" class="form-control mx-auto" id="numero_estudiante" name="numero_estudiante" value="' . $data["usuario"]["numero_estudiante"] . '" style="width: 50%;">';
+         echo '<label for="usuario" class="sr-only mt-2 mb-2">Usuario</label>';
+         echo '<input type="text" class="form-control mx-auto" id="usuario" name="usuario" value="' . $data["usuario"]["usuario"] . '" style="width: 50%;">';
      
          echo '<label for="correo" class="sr-only mt-2 mb-2">Correo</label>';
          echo '<input type="text" class="form-control mx-auto" id="correo" name="correo" value="' . $data["usuario"]["correo"] . '" style="width: 50%;">';
-     
-         echo '<label for="tipo" class="sr-only mt-2 mb-2">Tipo</label>';
-         echo '<input type="text" class="form-control mx-auto" id="tipo" name="tipo" value="' . $data["usuario"]["tipo"] . '" style="width: 50%;">';
      
          echo '<input type="hidden" name="id_usuario" value="'. $data["usuario"]["id_usuario"] .'">';
          echo '</div>';

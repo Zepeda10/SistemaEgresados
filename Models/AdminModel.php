@@ -182,8 +182,8 @@
             return $request;
         }
 
-        public function updateUser($id,$nombre,$numero,$correo,$tipo){
-            $query = "UPDATE usuarios SET nombre = '$nombre' , numero_estudiante = '$numero' , correo = '$correo' , tipo = '$tipo' WHERE id_usuario = $id";
+        public function updateUser($id,$nombre,$usuario,$correo){
+            $query = "UPDATE usuarios SET nombre_completo = '$nombre' , usuario = '$usuario' , correo = '$correo' WHERE id_usuario = $id";
             $request = $this->update($query);
 
             return $request;
@@ -226,10 +226,10 @@
             return $request;
         }
 
-        public function addUser($nombre,$numero,$correo,$tipo,$clave){
-            $query = "INSERT INTO usuarios (nombre,numero_estudiante,correo,tipo,clave) VALUES (?,?,?,?,?)";
+        public function addUser($usuario,$nombre,$correo,$clave){
+            $query = "INSERT INTO usuarios (usuario,nombre_completo,correo,clave) VALUES (?,?,?,?)";
 
-            $arrData = array($nombre,$numero,$correo,$tipo,$clave);
+            $arrData = array($usuario,$nombre,$correo,$clave);
             $request = $this->insert($query,$arrData);
 
             return $request;

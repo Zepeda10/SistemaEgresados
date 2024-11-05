@@ -43,9 +43,8 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre Completo</th>
-                    <th scope="col">No. Estudiante</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">Tipo</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -54,11 +53,9 @@
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
             echo '<td>' . $row['id_usuario'] . '</td>';
-            echo '<td>' . $row['nombre'] . '</td>';
-            echo '<td>' . $row['numero_estudiante'] . '</td>';
+            echo '<td>' . $row['nombre_completo'] . '</td>';
+            echo '<td>' . $row['usuario'] . '</td>';
             echo '<td>' . $row['correo'] . '</td>';
-             // Verifica si el campo "rol" es "admin" y aplica la clase de resaltado
-            echo '<td ' . ($row['tipo'] === 'admin' ? 'class="fw-bold text-success"' : '') . '>' . $row['tipo'] . '</td>';
             echo '<td>
                     <a href="'.base_url()."admin/editarUsuario/".$row["id_usuario"].'">
                         <button class="btn btn-primary">Editar</button>
@@ -103,9 +100,8 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre Completo</th>
-                    <th scope="col">No. Estudiante</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">Tipo</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>

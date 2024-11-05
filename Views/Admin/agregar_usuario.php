@@ -12,17 +12,14 @@
      echo '<form method="post" action="'.base_url().'admin/guardarUsuario" class="form-inline">';
          echo '<div class="form-group mb-2">';
         
-         echo '<label for="nombre" class="sr-only mt-2 mb-2">Nombre completo</label>';
-         echo '<input type="text" class="form-control mx-auto" id="nombre" name="nombre" value="" style="width: 50%;">';
+         echo '<label for="nombre_completo" class="sr-only mt-2 mb-2">Nombre completo</label>';
+         echo '<input type="text" class="form-control mx-auto" id="nombre_completo" name="nombre_completo" value="" style="width: 50%;">';
  
-         echo '<label for="numero_estudiante" class="sr-only mt-2 mb-2">No. estudiante</label>';
-         echo '<input type="text" class="form-control mx-auto" id="numero_estudiante" name="numero_estudiante" value="" style="width: 50%;">';
+         echo '<label for="usuario" class="sr-only mt-2 mb-2">Usuario</label>';
+         echo '<input type="text" class="form-control mx-auto" id="usuario" name="usuario" value="" style="width: 50%;">';
      
          echo '<label for="correo" class="sr-only mt-2 mb-2">Correo</label>';
          echo '<input type="text" class="form-control mx-auto" id="correo" name="correo" value="" style="width: 50%;">';
-     
-         echo '<label for="tipo" class="sr-only mt-2 mb-2">Tipo</label>';
-         echo '<input type="text" class="form-control mx-auto" id="tipo" name="tipo" value="" style="width: 50%;">';
 
          echo '<label for="clave" class="sr-only mt-2 mb-2">Clave</label>';
          echo '<input type="text" class="form-control mx-auto" id="clave" name="clave" value="" style="width: 50%;">';

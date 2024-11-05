@@ -149,11 +149,10 @@
 
         public function actualizarUsuario(){
             $id = $_POST["id_usuario"];
-            $nombre = $_POST["nombre"];
-            $numero = $_POST["numero_estudiante"];
+            $nombre = $_POST["nombre_completo"];
+            $usuario = $_POST["usuario"];
             $correo = $_POST["correo"];
-            $tipo = $_POST["tipo"];
-            $this->model->updateUser($id,$nombre,$numero,$correo,$tipo);
+            $this->model->updateUser($id,$nombre,$usuario,$correo);
             header("Location: ".base_url()."admin/usuarios");
         }
 
@@ -213,12 +212,11 @@
         }
 
         public function guardarUsuario(){
-            $nombre = $_POST["nombre"];
-            $numero = $_POST["numero_estudiante"];
+            $usuario = $_POST["usuario"];
+            $nombre = $_POST["nombre_completo"];
             $correo = $_POST["correo"];
-            $tipo = $_POST["tipo"];
             $clave = password_hash($_POST['clave'], PASSWORD_BCRYPT);
-            $this->model->addUser($nombre,$numero,$correo,$tipo,$clave);
+            $this->model->addUser($usuario,$nombre,$correo,$clave);
             header("Location: ".base_url()."admin/usuarios");
         }
 

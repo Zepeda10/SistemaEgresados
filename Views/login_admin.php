@@ -20,7 +20,7 @@
     <!-- Formulario de inicio de sesión a la derecha -->
     <div class="col-md-6">
       <div class="login-container">
-        <h2 class="mb-4">Iniciar Sesión como Administrador</h2>
+        <h2 class="mb-4">Iniciar Sesión</h2>
 
         <form id="adminLoginForm" action="../login/iniciarSesionAdmin" method="post">
           <div class="form-group">
@@ -35,7 +35,6 @@
         </form>
 
         <hr>
-        <p class="text-center">¿No eres administrador? <a href="<?php echo base_url(); ?>login/login">Inicia sesión como usuario</a></p>
       </div>
     </div>
   </div>
