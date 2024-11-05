@@ -63,12 +63,9 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// Validar que todos los campos estén llenos antes de enviar la encuesta
-
-document.getElementById("enviar").addEventListener("click", function (event) {
-  /*
+// Función para validar el formulario
+function validarFormulario(event) {
   var openfields = document.querySelectorAll(".form-control");
-
 
   if (openfields.length > 0) {
     for (var i = 0; i < openfields.length; i++) {
@@ -77,7 +74,7 @@ document.getElementById("enviar").addEventListener("click", function (event) {
           "Por favor, complete todas las preguntas antes de enviar la encuesta."
         );
         event.preventDefault();
-        return;
+        return false;
       }
     }
   }
@@ -91,7 +88,7 @@ document.getElementById("enviar").addEventListener("click", function (event) {
           "Por favor, complete todas las preguntas antes de enviar la encuesta."
         );
         event.preventDefault();
-        return;
+        return false;
       }
     }
   }
@@ -121,7 +118,7 @@ document.getElementById("enviar").addEventListener("click", function (event) {
           "Por favor, complete todas las preguntas antes de enviar la encuesta."
         );
         event.preventDefault();
-        return;
+        return false;
       }
     }
   }
@@ -142,10 +139,26 @@ document.getElementById("enviar").addEventListener("click", function (event) {
         "Por favor, complete todas las preguntas antes de enviar la encuesta."
       );
       event.preventDefault();
-      return;
+      return false;
     }
   }
-  */
+
+  return true; // La validación ha pasado
+}
+
+// Validar que todos los campos estén llenos antes de enviar la encuesta
+
+document.getElementById("enviar").addEventListener("click", function (event) {
+  // Obtener el idQuiz de la URL
+  var url = window.location.pathname; // Ejemplo: SistemaEgresados/Encuesta/preguntas/3
+  var idQuiz = parseInt(url.split("/").pop().split("&")[0]);
+
+  // Ejecutar la validación solo si idQuiz es diferente de 3
+  if (idQuiz !== 3) {
+    if (!validarFormulario(event)) {
+      return; // Detener si la validación falla
+    }
+  }
 
   // Recopilar datos del formulario
   var formData = new FormData();
