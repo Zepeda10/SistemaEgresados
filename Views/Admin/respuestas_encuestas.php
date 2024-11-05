@@ -19,6 +19,10 @@ echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
             '<option value="1">Encuesta 1</option>' .
             '<option value="2">Encuesta 2</option>' .
             '<option value="3">Encuesta 3</option>' .
+            '<option value="3">Encuesta 4</option>' .
+            '<option value="3">Encuesta 5</option>' .
+            '<option value="3">Encuesta 6</option>' .
+            '<option value="3">Encuesta 7</option>' .
         '</select>' 
         .
         '<input type="text" class="form-control flex-grow-1 me-2" id="filtroUsuario" style="width: 180px;" placeholder="Buscar usuario" />'  .
@@ -50,7 +54,6 @@ echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Usuario</th>
                         <th scope="col">Encuesta</th>
                         <th scope="col">Pregunta</th>
                         <th scope="col">Respuesta Cerrada</th>
@@ -64,7 +67,6 @@ echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
             echo '<td>' . $row['id_respuesta_usuario'] . '</td>';
-            echo '<td>' . $row['numero_estudiante'] . '</td>';
             echo '<td>' . $row['id_encuesta'] . '</td>';
             echo '<td>' . $row['texto_pregunta'] . '</td>';
             echo '<td>' . $row['opcion'] . '</td>';
@@ -110,7 +112,6 @@ echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
       <thead>
           <tr>
               <th scope="col">ID</th>
-              <th scope="col">Usuario</th>
               <th scope="col">Encuesta</th>
               <th scope="col">Pregunta</th>
               <th scope="col">Respuesta Cerrada</th>

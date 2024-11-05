@@ -67,8 +67,13 @@
         }
 
         public function getAllSurveysResponses(){
-            $query = "SELECT r.id_respuesta_usuario, u.numero_estudiante, r.id_encuesta, p.texto_pregunta, o.texto_respuesta AS 'opcion', r.texto_respuesta_abierta, r.fecha_respuesta FROM respuestas_usuarios_encuestas r 
-            INNER JOIN usuarios u ON r.id_usuario = u.id_usuario INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta LEFT JOIN respuestas_opciones o ON r.id_respuesta_opciones = o.id_respuesta ORDER BY r.id_respuesta_usuario ASC";
+            $query = "SELECT r.id_respuesta_usuario, r.id_encuesta, p.texto_pregunta, 
+            o.texto_respuesta AS 'opcion', r.texto_respuesta_abierta, 
+            r.fecha_respuesta 
+     FROM respuestas_usuarios_encuestas r
+     INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta
+     LEFT JOIN respuestas_opciones o ON r.id_respuesta_opciones = o.id_respuesta
+     ORDER BY r.id_respuesta_usuario ASC;";
             $request = $this->select_all($query);
 
             return $request;

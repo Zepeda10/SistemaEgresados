@@ -19,7 +19,6 @@
             $ids = $_POST["pregunta_id"];
             $quizId = isset($_GET['id']) ? (int)$_GET['id'] : 1;
             $answerType = $_POST["tipo_pregunta"];
-            $userId = 1; // hardcodeado
             $i = 0;
 
             foreach ($answers as $answerId => $allAnswers){
@@ -29,10 +28,10 @@
                 foreach ($allAnswers as $answer) {
 
                     if($tipo_pregunta == "abierta"){
-                         $this->model->addUsersAnswers($userId, $quizId, $answerId, NULL, $answer);
+                         $this->model->addUsersAnswers($quizId, $answerId, NULL, $answer);
                         echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - abierta <br>";
                     }else{
-                         $this->model->addUsersAnswers($userId, $quizId, $answerId, $answer, NULL);
+                         $this->model->addUsersAnswers($quizId, $answerId, $answer, NULL);
                         echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - cerrada <br>";
                     }
                     
