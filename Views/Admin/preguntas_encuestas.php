@@ -21,6 +21,10 @@
                 '<option value="1">Encuesta 1</option>' .
                 '<option value="2">Encuesta 2</option>' .
                 '<option value="3">Encuesta 3</option>' .
+                '<option value="4">Encuesta 4</option>' .
+                '<option value="5">Encuesta 5</option>' .
+                '<option value="6">Encuesta 6</option>' .
+                '<option value="7">Encuesta 7</option>' .
             '</select>' 
             .
             '<select id="filtroTipo" class="form-select me-2" style="width: 120px;">' .
