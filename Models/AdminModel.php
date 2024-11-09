@@ -101,13 +101,6 @@
             return $request;
         }
 
-        public function updateQuestionSubsurvey($id,$idSubencuesta,$tipo,$pregunta){
-            $query = "UPDATE preguntas_subencuestas SET id_subencuesta = $idSubencuesta , tipo_pregunta = '$tipo' , texto_pregunta = '$pregunta' WHERE id_pregunta_subencuesta = $id";
-            $request = $this->update($query);
-
-            return $request;
-        }
-
         public function getOneUser($id){
             $query = "SELECT * FROM usuarios WHERE id_usuario = $id";
             $request = $this->select($query);
@@ -178,7 +171,29 @@
 
             return $request; 
         }
+
+
+        // -------------------------- BUSCAR --------------------------
+        public function obtenerPreguntasFiltradas($encuesta, $tipo, $pregunta) {
+            // Construimos la consulta base
+            $query = "SELECT * FROM preguntas WHERE 1=1";
+        
+            // Condiciones para cada filtro, si existen
+            if (!empty($encuesta)) {
+                $query .= " AND id_encuesta = '$encuesta'";
+            }
+            if (!empty($tipo)) {
+                $query .= " AND tipo_pregunta = '$tipo'";
+            }
+            if (!empty($pregunta)) {
+                $query .= " AND texto_pregunta LIKE '%$pregunta%'";
+            }
+
+            $request = $this->select_all($query);
+        
+            return $request;
+        }
         
     }
 
-?>
+?> 

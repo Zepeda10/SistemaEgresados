@@ -7,9 +7,9 @@
 ?>
       <!-- Área de contenido -->
       <div class="content text-center">
-      <h2 class="mb-4">Agregar Pregunta Encuesta</h2>
+      <h2 class="mb-4">Preguntas</h2>
     
-      <div id="tablaContenedor">
+      <div id="tablaContenedor" data-url="<?php echo base_url() . 'admin/buscarPreguntasFiltradas'; ?>">
       <?php
         echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
         '<a href="' . base_url() . 'admin/agregarPreguntaEncuesta/"><button class="btn btn-success float-start mb-3">Agregar</button></a>' .
