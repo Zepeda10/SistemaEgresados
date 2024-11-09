@@ -14,13 +14,13 @@
           Encuestas
         </a>
         <a class="nav-link" href="<?php echo admin_url(); ?>opcionMultipleEncuesta">
-          Opciones múltiples encuestas
+          Opciones múltiples
         </a>
         <a class="nav-link" href="<?php echo admin_url(); ?>preguntasEncuestas">
-          Preguntas encuestas
+          Preguntas
         </a>
         <a class="nav-link active" href="<?php echo admin_url(); ?>respuestasEncuestas">
-          Respuestas encuestas
+          Respuestas
         </a>
         <a class="nav-link" href="<?php echo admin_url(); ?>usuarios">
           Usuarios
