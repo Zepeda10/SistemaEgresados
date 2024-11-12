@@ -5,6 +5,27 @@
 <?php   
     include ("Layouts/sidebar.php");
 ?>
+
+<style>
+  .table th,
+  .table td {
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .table td {
+    white-space: nowrap;
+  }
+
+  /* Limitar el ancho de la columna de Pregunta */
+  .pregunta-columna {
+    max-width: 200px; /* Ajusta este valor según tus necesidades */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+
       <!-- Área de contenido -->
       <div class="content text-center">
       <h2 class="mb-4">Preguntas</h2>
@@ -74,7 +95,7 @@
             echo '<td>' . $row['id_pregunta'] . '</td>';
             echo '<td>' . $row['id_encuesta'] . '</td>';
             echo '<td>' . $row['tipo_pregunta'] . '</td>';
-            echo '<td>' . $row['texto_pregunta'] . '</td>';
+            echo '<td class="pregunta-columna" data-toggle="tooltip" title="' . htmlspecialchars($row['texto_pregunta']) . '">' . $row['texto_pregunta'] . '</td>';
             echo '<td>
                 <a href="'.base_url()."admin/editarPreguntaEncuesta/".$row["id_pregunta"].'">
                     <button class="btn btn-primary">Editar</button>
@@ -145,4 +166,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<?php echo js_url(); ?>admin/buscarPreguntaEncuestas.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip(); // Inicializa el tooltip
+  });
+</script>
 

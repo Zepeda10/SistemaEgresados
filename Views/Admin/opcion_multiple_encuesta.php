@@ -45,7 +45,6 @@
                     <th scope="col">ID</th>
                     <th scope="col">Pregunta</th>
                     <th scope="col">Opción</th>
-                    <th scope="col">Valor numérico</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -56,7 +55,6 @@
             echo '<td>' . $row['id_respuesta'] . '</td>';
             echo '<td>' . $row['texto_pregunta'] . '</td>';
             echo '<td>' . $row['texto_respuesta'] . '</td>';
-            echo '<td>' . $row['valor_numerico'] . '</td>';
             echo '<td>
                     <a href="'.base_url()."admin/editarOpcionEncuesta/".$row["id_respuesta"].'">
                         <button class="btn btn-primary">Editar</button>
@@ -102,7 +100,6 @@
                     <th scope="col">ID</th>
                     <th scope="col">Pregunta</th>
                     <th scope="col">Opción</th>
-                    <th scope="col">Valor numérico</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>

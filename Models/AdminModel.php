@@ -24,7 +24,7 @@
         }
 
         public function getAllmultipleChoiceSurveys(){
-            $query = "SELECT r.id_respuesta, p.texto_pregunta, r.texto_respuesta, r.valor_numerico FROM respuestas_opciones r INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta";
+            $query = "SELECT r.id_respuesta, p.texto_pregunta, r.texto_respuesta FROM respuestas_opciones r INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta";
             $request = $this->select_all($query);
 
             return $request;
@@ -81,7 +81,7 @@
         }
 
         public function updateChoiceSurveys($id,$idPregunta,$opcion,$valor){
-            $query = "UPDATE respuestas_opciones SET id_pregunta = $idPregunta , texto_respuesta = '$opcion' , valor_numerico = $valor WHERE id_respuesta = $id";
+            $query = "UPDATE respuestas_opciones SET id_pregunta = $idPregunta , texto_respuesta = '$opcion' WHERE id_respuesta = $id";
             $request = $this->update($query);
 
             return $request;
@@ -116,10 +116,10 @@
         }
 
         // -------------------------- AGREGAR --------------------------
-        public function addChoiceSurveys($idPregunta,$opcion,$valor){
-            $query = "INSERT INTO respuestas_opciones (id_pregunta,texto_respuesta,valor_numerico) VALUES (?,?,?)";
+        public function addChoiceSurveys($idPregunta,$opcion){
+            $query = "INSERT INTO respuestas_opciones (id_pregunta,texto_respuesta) VALUES (?,?)";
 
-            $arrData = array($idPregunta,$opcion,$valor);
+            $arrData = array($idPregunta,$opcion);
             $request = $this->insert($query,$arrData);
 
             return $request;

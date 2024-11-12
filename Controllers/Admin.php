@@ -62,8 +62,7 @@
             $id = $_POST["id_respuesta"];
             $idPregunta = $_POST["id_pregunta"];
             $opcion = $_POST["texto_respuesta"];
-            $valor = $_POST["valor_numerico"];
-            $this->model->updateChoiceSurveys($id,$idPregunta,$opcion,$valor);
+            $this->model->updateChoiceSurveys($id,$idPregunta,$opcion);
             header("Location: ".base_url()."admin/opcionMultipleEncuesta");
         }
 
@@ -104,8 +103,7 @@
         public function guardarOpcionEncuesta(){
             $idPregunta = $_POST["id_pregunta"];
             $opcion = $_POST["texto_respuesta"];
-            $valor = $_POST["valor_numerico"];
-            $this->model->addChoiceSurveys($idPregunta,$opcion,$valor);
+            $this->model->addChoiceSurveys($idPregunta,$opcion);
             header("Location: ".base_url()."admin/opcionMultipleEncuesta");
         }
 
@@ -158,17 +156,12 @@
 
         // -------------------------- BUSCAR --------------------------
         public function buscarPreguntasFiltradas() {
-           // $filtroEncuesta = $this->input->get('filtroEncuesta');
-           // $filtroTipo = $this->input->get('filtroTipo');
-           // $filtroPregunta = $this->input->get('filtroPregunta');
             $filtroEncuesta = $_GET["filtroEncuesta"];
             $filtroTipo = $_GET["filtroTipo"];
             $filtroPregunta = $_GET["filtroPregunta"];
-        
-            // Filtra los datos según los parámetros
+
             $data["preguntas"] = $this->model->obtenerPreguntasFiltradas($filtroEncuesta, $filtroTipo, $filtroPregunta);
-        
-            // Carga solo la tabla (sin toda la estructura) para reemplazar en la vista AJAX
+
             $this->views->getView($this,"preguntas_encuestas", $data);
         }
         
