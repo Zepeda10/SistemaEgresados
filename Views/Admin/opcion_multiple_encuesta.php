@@ -53,8 +53,8 @@
         foreach ($paginas[$pagina_actual] as $row) {
             echo '<tr>';
             echo '<td>' . $row['id_respuesta'] . '</td>';
-            echo '<td>' . $row['texto_pregunta'] . '</td>';
-            echo '<td>' . $row['texto_respuesta'] . '</td>';
+            echo '<td class="pregunta-columna" data-toggle="tooltip" title="' . htmlspecialchars($row['texto_pregunta']) . '">' . $row['texto_pregunta'] . '</td>';
+            echo '<td class="respuesta-columna" data-toggle="tooltip" title="' . htmlspecialchars($row['texto_respuesta']) . '">' . $row['texto_respuesta'] . '</td>';
             echo '<td>
                     <a href="'.base_url()."admin/editarOpcionEncuesta/".$row["id_respuesta"].'">
                         <button class="btn btn-primary">Editar</button>
@@ -124,3 +124,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<?php echo js_url(); ?>admin/buscarOpcionesEncuestas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="<?php echo js_url(); ?>admin/tooltip.js"></script>

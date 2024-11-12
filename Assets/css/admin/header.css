@@ -39,3 +39,21 @@ body {
 .content {
   padding: 20px;
 }
+
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table td {
+  white-space: nowrap;
+}
+
+.pregunta-columna,
+.respuesta-columna {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

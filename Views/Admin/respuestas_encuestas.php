@@ -68,9 +68,9 @@ echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
             echo '<tr>';
             echo '<td>' . $row['id_respuesta_usuario'] . '</td>';
             echo '<td>' . $row['id_encuesta'] . '</td>';
-            echo '<td>' . $row['texto_pregunta'] . '</td>';
-            echo '<td>' . $row['opcion'] . '</td>';
-            echo '<td>' . $row['texto_respuesta_abierta'] . '</td>';
+            echo '<td class="pregunta-columna" data-toggle="tooltip" title="' . htmlspecialchars($row['texto_pregunta']) . '">' . $row['texto_pregunta'] . '</td>';
+            echo '<td class="respuesta-columna" data-toggle="tooltip" title="' . htmlspecialchars($row['opcion']) . '">' . $row['opcion'] . '</td>';
+            echo '<td class="respuesta-columna" data-toggle="tooltip" title="' . htmlspecialchars($row['texto_respuesta_abierta']) . '">' . $row['texto_respuesta_abierta'] . '</td>';
             echo '<td>' . $row['fecha_respuesta'] . '</td>';
             echo '<td>
                 <a href="'.base_url()."admin/eliminarRespuestaEncuesta/".$row["id_respuesta_usuario"].'">
@@ -140,3 +140,6 @@ echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<?php echo js_url(); ?>admin/buscarRespuestaEncuestas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="<?php echo js_url(); ?>admin/tooltip.js"></script>
