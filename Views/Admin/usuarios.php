@@ -14,11 +14,16 @@
       <?php
 
         echo '<div class="d-flex justify-content-between align-items-center mb-3">';
-            echo '<a href="' . base_url() . 'admin/agregarUsuario/"><button class="btn btn-success float-start mb-3">Agregar</button></a>';
-            echo '<form class="d-flex col-md-3" id="searchForm">
-            <input type="text" class="form-control" style="width: 300px;" id="filtroUsuario" placeholder="Buscar usuario" />
-                </form>';
+        echo '<div class="d-flex align-items-center">';
+            echo '<a href="' . base_url() . 'admin/agregarUsuario/">';
+                echo '<button class="btn btn-success me-2">Agregar</button>';
+            echo '</a>';
+            echo '<form class="d-flex" id="searchForm">';
+                echo '<input type="text" class="form-control" id="filtroUsuario" placeholder="Buscar usuario" />';
+            echo '</form>';
         echo '</div>';
+        echo '</div>';
+
 
       if (isset($data["usuarios"]) && is_array($data["usuarios"]) && count($data["usuarios"]) > 0) {
         // Define el número de registros por página
