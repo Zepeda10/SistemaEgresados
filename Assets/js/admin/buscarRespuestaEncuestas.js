@@ -1,46 +1,32 @@
 $(document).ready(function () {
-  // Evento de cambio en el dropdown de Enuesta
-  $("#filtroEncuesta").change(function () {
-    var filtroEncuesta = $(this).val(); // Obtener el valor seleccionado en el dropdown de Encuesta
-    filtrarTabla(filtroEncuesta, "", "");
-  });
+  // Función para enviar los filtros al backend
+  function filtrarDatos() {
+    const encuesta = $("#filtroEncuesta").val();
+    const pregunta = $("#filtroPregunta").val();
+    const url = $("#tablaContenedor").data("url"); // URL para la solicitud AJAX
 
-  // Evento de cambio en el dropdown de Tipo
-  $("#filtroUsuario").keyup(function () {
-    var filtroUsuario = $(this).val().toLowerCase(); // Obtener el valor del input y convertir a minúsculas
-    filtrarTabla("", filtroUsuario, "");
-  });
-
-  // Evento de entrada de texto en el input de búsqueda de Pregunta
-  $("#filtroPregunta").keyup(function () {
-    var filtroPregunta = $(this).val().toLowerCase(); // Obtener el valor del input y convertir a minúsculas
-    filtrarTabla("", "", filtroPregunta);
-  });
-
-  // Función para filtrar la tabla
-  function filtrarTabla(filtroEncuesta, filtroUsuario, filtroPregunta) {
-    // Ocultar todas las filas de la tabla
-    $("tbody tr").hide();
-
-    // Mostrar solo las filas que coincidan con los filtros seleccionados
-    $("tbody tr").each(function () {
-      var encuesta = $(this).find("td:nth-child(3)").text().trim();
-      var usuario = $(this).find("td:nth-child(2)").text().toLowerCase().trim();
-      var pregunta = $(this)
-        .find("td:nth-child(4)")
-        .text()
-        .toLowerCase()
-        .trim();
-
-      console.log("usuario: ", usuario);
-
-      if (
-        (filtroEncuesta === "" || encuesta === filtroEncuesta) &&
-        (filtroUsuario === "" || usuario.includes(filtroUsuario)) &&
-        (filtroPregunta === "" || pregunta.includes(filtroPregunta))
-      ) {
-        $(this).show();
-      }
+    // Realiza la solicitud AJAX, ya sea con o sin filtros
+    $.ajax({
+      url: url,
+      method: "GET",
+      data: {
+        filtroEncuesta: encuesta,
+        filtroPregunta: pregunta,
+      },
+      success: function (response) {
+        console.log("RESPONSE: " + response);
+        var newRows = $(response).find("#tablaContenedor tbody").html();
+        console.log("NEWROWS: " + newRows);
+        // Reemplaza el contenido del tbody de la tabla actual
+        $("#tablaContenedor tbody").empty().append(newRows);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error en la solicitud:", error);
+      },
     });
   }
+
+  // Llama a filtrarDatos cuando se cambien los valores de los filtros
+  $("#filtroEncuesta").on("change", filtrarDatos);
+  $("#filtroPregunta").on("keyup", filtrarDatos);
 });

@@ -8,26 +8,26 @@
       <!-- Área de contenido -->
       <div class="content text-center">
       <h2 class="mb-4">Respuestas Encuestas</h2>
-    
+      <div id="tablaContenedor" data-url="<?php echo base_url() . 'admin/buscarRespuestasFiltradas'; ?>">   
       <?php
 
-echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
-    '<form class="d-flex col-md-8" id="searchForm">' 
-    .
-        '<select id="filtroEncuesta" class="form-select me-2" style="width: 120px;">' .
-            '<option value="">Encuesta</option>' .
-            '<option value="1">Encuesta 1</option>' .
-            '<option value="2">Encuesta 2</option>' .
-            '<option value="3">Encuesta 3</option>' .
-            '<option value="4">Encuesta 4</option>' .
-            '<option value="5">Encuesta 5</option>' .
-            '<option value="6">Encuesta 6</option>' .
-            '<option value="7">Encuesta 7</option>' .
-        '</select>' 
-        .
-        '<input type="text" class="form-control" style="width: 300px;" id="filtroPregunta" placeholder="Buscar pregunta" />' .
-    '</form>' .
-    '</div>';
+        echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
+            '<form class="d-flex col-md-8" id="searchForm">' 
+            .
+                '<select id="filtroEncuesta" class="form-select me-2" style="width: 120px;">' .
+                    '<option value="">Encuesta</option>' .
+                    '<option value="1">Encuesta 1</option>' .
+                    '<option value="2">Encuesta 2</option>' .
+                    '<option value="3">Encuesta 3</option>' .
+                    '<option value="4">Encuesta 4</option>' .
+                    '<option value="5">Encuesta 5</option>' .
+                    '<option value="6">Encuesta 6</option>' .
+                    '<option value="7">Encuesta 7</option>' .
+                '</select>' 
+                .
+                '<input type="text" class="form-control" style="width: 300px;" id="filtroPregunta" placeholder="Buscar pregunta" />' .
+            '</form>' .
+            '</div>';
 
        // Verifica si hay datos en el array "respuestas"
     if (isset($data["respuestas"]) && is_array($data["respuestas"]) && count($data["respuestas"]) > 0) {

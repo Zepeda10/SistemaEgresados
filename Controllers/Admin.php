@@ -164,6 +164,15 @@
 
             $this->views->getView($this,"preguntas_encuestas", $data);
         }
+
+        public function buscarRespuestasFiltradas() {
+            $filtroEncuesta = $_GET["filtroEncuesta"];
+            $filtroPregunta = $_GET["filtroPregunta"];
+
+            $data["respuestas"] = $this->model->obtenerRespuestasFiltradas($filtroEncuesta, $filtroPregunta);
+
+            $this->views->getView($this,"respuestas_encuestas", $data);
+        }
         
     }
     
