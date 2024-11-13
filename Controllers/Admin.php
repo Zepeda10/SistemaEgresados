@@ -181,6 +181,14 @@
 
             $this->views->getView($this,"opcion_multiple_encuesta", $data);
         }
+
+        public function buscarUsuariosFiltrados() {
+            $filtroUsuario = $_GET["filtroUsuario"];
+
+            $data["usuarios"] = $this->model->obtenerUsuariosFiltrados($filtroUsuario);
+
+            $this->views->getView($this,"usuarios", $data);
+        }
         
     }
     

@@ -9,15 +9,14 @@
       <div class="content text-center">
       <h2 class="mb-4">Usuarios</h2>
 
-      <div id="tablaContenedor">
+      <div id="tablaContenedor" data-url="<?php echo base_url() . 'admin/buscarUsuariosFiltrados'; ?>"> 
     
       <?php
 
         echo '<div class="d-flex justify-content-between align-items-center mb-3">';
             echo '<a href="' . base_url() . 'admin/agregarUsuario/"><button class="btn btn-success float-start mb-3">Agregar</button></a>';
             echo '<form class="d-flex col-md-3" id="searchForm">
-                    <input class="form-control me-2" type="search" id="searchInput" placeholder="Buscar usuario" aria-label="Search">
-                    <button class="btn btn-primary" type="button" id="searchButton">Buscar</button>
+            <input type="text" class="form-control" style="width: 300px;" id="filtroUsuario" placeholder="Buscar usuario" />
                 </form>';
         echo '</div>';
 

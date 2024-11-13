@@ -221,7 +221,21 @@
         }
         
         public function obtenerOpcionesFiltradas($pregunta) {
-            $query = "SELECT r.id_respuesta, p.texto_pregunta, r.texto_respuesta FROM respuestas_opciones r INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta WHERE p.texto_pregunta LIKE '%$pregunta%'";
+            $pregunta = htmlspecialchars($pregunta, ENT_QUOTES, 'UTF-8');
+    
+            $query = "SELECT r.id_respuesta, p.texto_pregunta, r.texto_respuesta 
+                      FROM respuestas_opciones r 
+                      INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta 
+                      WHERE p.texto_pregunta LIKE '%" . $pregunta . "%'";
+        
+            $request = $this->select_all($query);
+        
+            return $request;
+        }
+        
+
+        public function obtenerUsuariosFiltrados($usuario) {
+            $query = "SELECT * from usuarios WHERE usuario LIKE '%$usuario%'";
             $request = $this->select_all($query);
         
             return $request;

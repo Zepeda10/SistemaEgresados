@@ -1,24 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const searchForm = document.getElementById("searchForm");
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-  const tablaContenedor = document.getElementById("tablaContenedor");
+$(document).ready(function () {
+  function filtrarUsuarios() {
+    const usuario = $("#filtroUsuario").val();
+    const url = $("#tablaContenedor").data("url");
 
-  searchButton.addEventListener("click", function () {
-    const searchText = searchInput.value.toLowerCase();
-    const tabla = document.querySelector("table");
-    const filas = tabla.querySelectorAll("tr");
-
-    filas.forEach(function (fila) {
-      const columnaUsuario = fila.querySelector("td:nth-child(3)");
-      if (columnaUsuario) {
-        const textoUsuario = columnaUsuario.textContent.toLowerCase();
-        if (textoUsuario.includes(searchText)) {
-          fila.style.display = "";
-        } else {
-          fila.style.display = "none";
-        }
-      }
+    $.ajax({
+      url: url,
+      type: "GET",
+      data: {
+        filtroUsuario: usuario,
+      },
+      success: function (response) {
+        const newRows = $(response).find("#tablaContenedor tbody").html();
+        console.log(newRows);
+        $("#tablaContenedor tbody").html(newRows);
+      },
+      error: function () {
+        console.error("Error al cargar los datos filtrados.");
+      },
     });
-  });
+  }
+  $("#filtroUsuario").on("keyup", filtrarUsuarios);
 });
