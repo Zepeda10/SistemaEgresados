@@ -25,9 +25,7 @@ echo '<div class="d-flex justify-content-between align-items-center mb-3">' .
             '<option value="7">Encuesta 7</option>' .
         '</select>' 
         .
-        '<input type="text" class="form-control flex-grow-1 me-2" id="filtroUsuario" style="width: 180px;" placeholder="Buscar usuario" />'  .
-
-        '<input type="text" class="form-control flex-grow-1" id="filtroPregunta" style="width: 180px;" placeholder="Buscar pregunta" />' .
+        '<input type="text" class="form-control" style="width: 300px;" id="filtroPregunta" placeholder="Buscar pregunta" />' .
     '</form>' .
     '</div>';
 
