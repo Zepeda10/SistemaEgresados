@@ -173,6 +173,14 @@
 
             $this->views->getView($this,"respuestas_encuestas", $data);
         }
+
+        public function buscarOpcionesFiltradas() {
+            $filtroPregunta = $_GET["filtroPregunta"];
+
+            $data["opciones"] = $this->model->obtenerOpcionesFiltradas($filtroPregunta);
+
+            $this->views->getView($this,"opcion_multiple_encuesta", $data);
+        }
         
     }
     

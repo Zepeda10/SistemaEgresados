@@ -10,17 +10,16 @@
       <h2 class="mb-4">Opciones Múltiples Encuestas</h2>
 
 
-      <div id="tablaContenedor">
+      <div id="tablaContenedor" data-url="<?php echo base_url() . 'admin/buscarOpcionesFiltradas'; ?>"> 
       <?php
 
-        echo '<div class="d-flex justify-content-between align-items-center mb-3">';
-        echo '<a href="' . base_url() . 'admin/agregarOpcionEncuesta/"><button class="btn btn-success float-start mb-3">Agregar</button></a>';
-
-        echo '<form class="d-flex col-md-6" id="searchForm">
-                <input class="form-control me-2" type="search" id="searchInput" placeholder="Buscar pregunta" aria-label="Search">
-                <button class="btn btn-primary" type="button" id="searchButton">Buscar</button>
-            </form>';
+        echo '<div class="d-flex justify-content-start align-items-center mb-3">';
+        echo '<a href="' . base_url() . 'admin/agregarOpcionEncuesta/"><button class="btn btn-success me-2">Agregar</button></a>';
+        echo '<form class="d-flex align-items-center" id="searchForm">';
+        echo '<input type="text" class="form-control" style="width: 300px;" id="filtroPregunta" placeholder="Buscar pregunta" />';
+        echo '</form>';
         echo '</div>';
+
 
       if (isset($data["opciones"]) && is_array($data["opciones"]) && count($data["opciones"]) > 0) {
         // Define el número de registros por página

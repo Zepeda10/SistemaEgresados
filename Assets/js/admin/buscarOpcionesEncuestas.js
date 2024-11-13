@@ -1,24 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const searchForm = document.getElementById("searchForm");
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-  const tablaContenedor = document.getElementById("tablaContenedor");
+$(document).ready(function () {
+  function filtrarOpciones() {
+    const pregunta = $("#filtroPregunta").val();
+    const url = $("#tablaContenedor").data("url");
 
-  searchButton.addEventListener("click", function () {
-    const searchText = searchInput.value.toLowerCase();
-    const tabla = document.querySelector("table");
-    const filas = tabla.querySelectorAll("tr");
+    $.ajax({
+      url: url,
+      type: "GET",
+      data: {
+        filtroPregunta: pregunta,
+      },
+      success: function (response) {
+        var newRows = $(response).find("#tablaContenedor tbody").html();
 
-    filas.forEach(function (fila) {
-      const columnaPregunta = fila.querySelector("td:nth-child(2)");
-      if (columnaPregunta) {
-        const textoPregunta = columnaPregunta.textContent.toLowerCase();
-        if (textoPregunta.includes(searchText)) {
-          fila.style.display = "";
-        } else {
-          fila.style.display = "none";
-        }
-      }
+        $("#tablaContenedor tbody").html(newRows);
+      },
+      error: function () {
+        console.error("Error al cargar los datos filtrados.");
+      },
     });
-  });
+  }
+  $("#filtroPregunta").on("keyup", filtrarOpciones);
 });

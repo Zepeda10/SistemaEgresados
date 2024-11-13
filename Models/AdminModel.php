@@ -195,7 +195,6 @@
         }
 
         public function obtenerRespuestasFiltradas($encuesta, $pregunta) {
-            // Construimos la consulta base
             $query = "SELECT r.id_respuesta_usuario, r.id_encuesta, p.texto_pregunta, 
                              o.texto_respuesta AS 'opcion', r.texto_respuesta_abierta, 
                              r.fecha_respuesta 
@@ -204,27 +203,29 @@
                       LEFT JOIN respuestas_opciones o ON r.id_respuesta_opciones = o.id_respuesta
                       WHERE 1=1";
         
-            // Condición para el filtro de encuesta si existe
+
             if (!empty($encuesta)) {
                 $query .= " AND r.id_encuesta = " . intval($encuesta);
             }
-        
-            // Condición para el filtro de pregunta si existe
+
             if (!empty($pregunta)) {
                 $sanitizedPregunta = htmlspecialchars($pregunta, ENT_QUOTES, 'UTF-8');
                 $query .= " AND p.texto_pregunta LIKE '%" . $sanitizedPregunta . "%'";
             }
-        
-            // Ordenamos los resultados por el id de respuesta de usuario
+ 
             $query .= " ORDER BY r.id_respuesta_usuario ASC";
-        
-            // Ejecutamos la consulta sin parámetros
+
             $request = $this->select_all($query);
         
             return $request;
         }
         
+        public function obtenerOpcionesFiltradas($pregunta) {
+            $query = "SELECT r.id_respuesta, p.texto_pregunta, r.texto_respuesta FROM respuestas_opciones r INNER JOIN preguntas p ON r.id_pregunta = p.id_pregunta WHERE p.texto_pregunta LIKE '%$pregunta%'";
+            $request = $this->select_all($query);
         
+            return $request;
+        }
         
         
     }
