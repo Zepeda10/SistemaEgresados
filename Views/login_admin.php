@@ -21,6 +21,19 @@
     <div class="col-md-6">
       <div class="login-container">
         <h2 class="mb-4">Iniciar Sesión</h2>
+        
+        <!-- Mensaje de error si el usuario no existe -->
+        <?php
+        if (isset($_GET['error']) && $_GET['error'] === 'usuario_no_existe') {
+          echo "
+          <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+            El usuario no existe. Por favor, intente de nuevo.
+            <button type='button' class='close' data-dismiss='alert' aria-label='Cerrar'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>";
+        }
+        ?>
 
         <form id="adminLoginForm" action="../login/iniciarSesionAdmin" method="post">
           <div class="form-group">
@@ -40,7 +53,7 @@
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 

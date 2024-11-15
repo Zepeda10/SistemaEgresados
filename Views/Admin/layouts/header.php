@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // Si no hay sesión iniciada, redirige al login
+    header("Location: " . base_url() . "login/admin");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
