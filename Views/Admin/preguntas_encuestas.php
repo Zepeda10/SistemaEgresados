@@ -96,19 +96,19 @@
 
         // Botón de "Anterior"
         $anterior = $pagina_actual - 1;
-        echo '<li class="page-item ' . ($pagina_actual == 0 ? 'disabled' : '') . '">';
-        echo '<a class="page-link" href="?pagina=' . $anterior . '" tabindex="-1" aria-disabled="true">Anterior</a>';
+        echo '<li class="page-item ' . ($pagina_actual <= 0 ? 'disabled' : '') . '">';
+        echo '<a class="page-link" href="?pagina=' . ($pagina_actual) . '" tabindex="-1" aria-disabled="true">Anterior</a>';
         echo '</li>';
-
+        
         // Números de página
         for ($i = 0; $i < $total_paginas; $i++) {
             echo '<li class="page-item ' . ($pagina_actual == $i ? 'active' : '') . '"><a class="page-link" href="?pagina=' . ($i + 1) . '">' . ($i + 1) . '</a></li>';
         }
-
+        
         // Botón de "Siguiente"
         $siguiente = $pagina_actual + 1;
-        echo '<li class="page-item ' . ($pagina_actual == $total_paginas - 1 ? 'disabled' : '') . '">';
-        echo '<a class="page-link" href="?pagina=' . $siguiente . '">Siguiente</a>';
+        echo '<li class="page-item ' . ($pagina_actual >= $total_paginas - 1 ? 'disabled' : '') . '">';
+        echo '<a class="page-link" href="?pagina=' . ($pagina_actual + 2) . '">Siguiente</a>';
         echo '</li>';
 
         echo '</ul>';
