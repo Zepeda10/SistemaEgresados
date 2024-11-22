@@ -69,8 +69,9 @@
         echo '</table>';
 
         // Paginador
-        echo '<nav aria-label="Page navigation">';
-        echo '<ul class="pagination justify-content-center">';
+        echo '<div style="overflow-x: auto; white-space: nowrap; text-align: center;">';
+        echo '<nav aria-label="Page navigation" style="display: inline-block;">';
+        echo '<ul class="pagination flex-nowrap">';
 
         // Botón de "Anterior"
         $anterior = $pagina_actual - 1;
@@ -90,6 +91,7 @@
         echo '</li>';
         echo '</ul>';
         echo '</nav>';
+        echo '</div>';
       } else {
         // Contenido de la tabla cuando no hay datos
       echo '<table class="table">
