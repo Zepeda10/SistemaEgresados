@@ -160,50 +160,87 @@ document.getElementById("enviar").addEventListener("click", function (event) {
     }
   }
 
-  // Recopilar datos del formulario
+  // Inicializar formData
   var formData = new FormData();
 
-  // Preguntas abiertas
-  var preguntaAbierta = document.querySelector(
+  // Validación para preguntas abiertas
+  var preguntaAbiertaField = document.querySelector(
     'textarea[name="pregunta_abierta"]'
-  ).value;
-  formData.append("pregunta_abierta", preguntaAbierta);
+  );
+  if (preguntaAbiertaField) {
+    var preguntaAbierta = preguntaAbiertaField.value;
+    formData.append("pregunta_abierta", preguntaAbierta);
+  } else {
+    console.warn('El campo "pregunta_abierta" no está presente en el HTML.');
+  }
 
-  // Preguntas de selección
-  var preguntaSeleccion = document.querySelector(
+  // Validación para preguntas de selección
+  var preguntaSeleccionField = document.querySelector(
     'select[name="pregunta_seleccion"]'
-  ).value;
-  formData.append("pregunta_seleccion", preguntaSeleccion);
+  );
+  if (preguntaSeleccionField) {
+    var preguntaSeleccion = preguntaSeleccionField.value;
+    formData.append("pregunta_seleccion", preguntaSeleccion);
+  } else {
+    console.warn('El campo "pregunta_seleccion" no está presente en el HTML.');
+  }
 
-  // Preguntas de radio
+  // Validación para preguntas de radio
   var radios = document.querySelectorAll(
     'input[type="radio"][name="pregunta_radio"]'
   );
-  radios.forEach(function (radio) {
-    if (radio.checked) {
-      formData.append("pregunta_radio", radio.value);
+  if (radios.length > 0) {
+    var radioChecked = false;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        formData.append("pregunta_radio", radio.value);
+        radioChecked = true;
+      }
+    });
+    if (!radioChecked) {
+      console.warn('No se seleccionó ninguna opción para "pregunta_radio".');
     }
-  });
+  } else {
+    console.warn(
+      'El grupo de botones de radio "pregunta_radio" no está presente en el HTML.'
+    );
+  }
 
-  // Preguntas de checkbox
+  // Validación para preguntas de checkbox
   var checkboxes = document.querySelectorAll(
-    'input[type="checkbox"][name="pregunta_checkbox[]"]:checked'
+    'input[type="checkbox"][name="pregunta_checkbox[]"]'
   );
-  checkboxes.forEach(function (checkbox) {
-    formData.append("pregunta_checkbox[]", checkbox.value);
-  });
+  if (checkboxes.length > 0) {
+    var checkboxChecked = false;
+    checkboxes.forEach(function (checkbox) {
+      if (checkbox.checked) {
+        formData.append("pregunta_checkbox[]", checkbox.value);
+        checkboxChecked = true;
+      }
+    });
+    if (!checkboxChecked) {
+      console.warn('No se seleccionó ninguna opción para "pregunta_checkbox".');
+    }
+  } else {
+    console.warn(
+      'El grupo de checkboxes "pregunta_checkbox[]" no está presente en el HTML.'
+    );
+  }
 
   // Realizar la solicitud AJAX
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "../Encuesta/enviar", true);
   xhr.onload = function () {
     if (xhr.status === 200) {
-      // Manejar la respuesta del servidor
       console.log(xhr.responseText);
-      const idQuiz = response.id_quiz;
+
       alert("Formulario enviado exitosamente.");
-      // Redirigir a la URL con ?status=success
-      window.location.href = `../../Encuesta/preguntas?id=${idQuiz}&status=success`;
+      console.log(idQuiz);
+
+      if (idQuiz === 7) {
+        console.log("sietee");
+        window.location.href = `../../home/home`;
+      }
     } else {
       // Manejar errores de la solicitud
       console.error("Error en la solicitud AJAX: " + xhr.status);
