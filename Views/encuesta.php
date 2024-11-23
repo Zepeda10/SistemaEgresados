@@ -49,6 +49,8 @@
 
                         echo '<select class="form-select" name="respuesta[' . $id . '][]">';
 
+                        echo '<option value="" selected disabled>Seleccione una opción</option>';
+
                         $filteredData = array_filter($data['close_answers'], function ($element) use ($id) {
                             return filterByAttributeValue($element, $id);
                         });
