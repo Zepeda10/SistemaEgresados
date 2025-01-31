@@ -38,6 +38,16 @@
             $this->views->getView($this,"usuarios",$data);
         }
 
+        public function graficas(){
+            // $data["graficas"] = $this->model->getAllUsers();
+            $this->views->getView($this,"generar_graficos");
+        }
+
+        public function mostrarGraficas(){
+            // $data["graficas"] = $this->model->getAllUsers();
+            $this->views->getView($this,"graficos");
+        }
+
         // -------------------------- EDITAR --------------------------
 
         public function editarEncuesta($id){

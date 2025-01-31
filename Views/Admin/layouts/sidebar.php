@@ -26,6 +26,9 @@
         <a class="nav-link" href="<?php echo admin_url(); ?>usuarios">
           Usuarios
         </a>
+        <a class="nav-link" href="<?php echo admin_url(); ?>graficas">
+          Gráficas
+        </a>
       </div>
     </nav>
 
