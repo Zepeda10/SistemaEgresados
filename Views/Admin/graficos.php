@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gráfica de Encuesta</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       body {
@@ -17,55 +18,42 @@
       }
     </style>
   </head>
-  <body>
-    <h1>Gráfica de la Encuesta</h1>
-    <canvas id="grafica" width="400" height="200"></canvas>
+  <body> 
+    <h2 class="text-center">Gráfica de la Encuesta <?php echo htmlspecialchars($_GET['encuesta'] ?? ''); ?></h2>
+    <p class="text-center"><?php echo htmlspecialchars($_GET['fechaInicio'] ?? ''); ?> a <?php echo htmlspecialchars($_GET['fechaFin'] ?? ''); ?></p>
 
-    <script>
-      // Obtener los parámetros de la URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const encuesta = urlParams.get("encuesta");
-      const fechaInicio = urlParams.get("fechaInicio");
-      const fechaFin = urlParams.get("fechaFin");
+    <?php foreach ($data["graficasAgrupadas"] as $pregunta => $respuestas): ?>
+        <h4 class="text-secondary"><?php echo htmlspecialchars($pregunta); ?></h4>
+        <canvas id="grafica_<?php echo md5($pregunta); ?>" width="400" height="200"></canvas>
 
-      // Mostrar los datos seleccionados (opcional, solo para ver los valores)
-      console.log(
-        `Encuesta: ${encuesta}, Fecha Inicio: ${fechaInicio}, Fecha Fin: ${fechaFin}`
-      );
+        <script>
+            const datos_<?php echo md5($pregunta); ?> = {
+                labels: [<?php echo implode(", ", array_map(function($resp) { return '"' . addslashes($resp['texto_respuesta']) . '"'; }, $respuestas)); ?>],
+                datasets: [{
+                    label: "Respuestas",
+                    data: [<?php echo implode(", ", array_map(function($resp) { return $resp['total_respuestas']; }, $respuestas)); ?>],
+                    backgroundColor: "rgba(75, 192, 192, 0.2)",
+                    borderColor: "rgba(75, 192, 192, 1)",
+                    borderWidth: 1
+                }]
+            };
 
-      // Aquí es donde debes integrar los datos reales de la encuesta según el parámetro `encuesta` y las fechas seleccionadas
-      // Los datos y etiquetas deben ser obtenidos dinámicamente desde la base de datos o de una API
+            const config_<?php echo md5($pregunta); ?> = {
+                type: 'bar',
+                data: datos_<?php echo md5($pregunta); ?>,
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
 
-      // Datos de ejemplo (debes reemplazar estos con los datos reales)
-      const datos = {
-        labels: ["Enero", "Febrero", "Marzo"], // Etiquetas de ejemplo
-        datasets: [
-          {
-            label: `Resultados Encuesta ${encuesta}`,
-            data: [65, 59, 80], // Resultados de ejemplo
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
-            borderWidth: 1,
-          },
-        ],
-      };
-
-      const config = {
-        type: "bar", // Tipo de gráfico: barra
-        data: datos,
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        },
-      };
-
-      // Obtener el contexto del canvas y generar el gráfico
-      const ctx = document.getElementById("grafica").getContext("2d");
-      new Chart(ctx, config);
-    </script>
+            const ctx_<?php echo md5($pregunta); ?> = document.getElementById("grafica_<?php echo md5($pregunta); ?>").getContext("2d");
+            new Chart(ctx_<?php echo md5($pregunta); ?>, config_<?php echo md5($pregunta); ?>);
+        </script>
+    <?php endforeach; ?>
   </body>
 </html>

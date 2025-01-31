@@ -43,9 +43,32 @@
             $this->views->getView($this,"generar_graficos");
         }
 
+
         public function mostrarGraficas(){
-            // $data["graficas"] = $this->model->getAllUsers();
-            $this->views->getView($this,"graficos");
+            $encuesta = $_GET['encuesta'] ?? null;
+            $fechaInicio = $_GET['fechaInicio'] ?? null;
+            $fechaFin = $_GET['fechaFin'] ?? null;
+
+            if ($encuesta && $fechaInicio && $fechaFin) {
+                // Obtener los datos de la base de datos
+                $data["graficas"] = $this->model->graphQuery($encuesta, $fechaInicio, $fechaFin);
+
+                // Agrupar las respuestas por pregunta
+                $agrupadoPorPregunta = [];
+                foreach ($data["graficas"] as $respuesta) {
+                    // Agrupar las respuestas por la pregunta
+                    $agrupadoPorPregunta[$respuesta['texto_pregunta']][] = $respuesta;
+                }
+
+                // Ahora $agrupadoPorPregunta contiene las respuestas agrupadas por pregunta.
+                $data["graficasAgrupadas"] = $agrupadoPorPregunta;
+            } else {
+                $data["graficasAgrupadas"] = [];
+            }
+
+
+
+           $this->views->getView($this, "graficos", $data);
         }
 
         // -------------------------- EDITAR --------------------------
