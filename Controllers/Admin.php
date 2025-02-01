@@ -87,7 +87,7 @@
 
         public function editarOpcionEncuesta($id){
             $data["opcion"] = $this->model->getOneChoiceSurveys($id);
-            $data['preguntas'] = $this->model->getQuestionsBySurvey(1);
+            $data['preguntas'] = $this->model->getQuestionsBySurvey();
             $this->views->getView($this,"editar_opcion_multiple_encuesta",$data);
         }
 
@@ -129,7 +129,7 @@
 
         // -------------------------- AGREGAR --------------------------
         public function agregarOpcionEncuesta(){
-            $data['preguntas'] = $this->model->getQuestionsBySurvey(1);
+            $data['preguntas'] = $this->model->getQuestionsBySurvey();
            $this->views->getView($this,"agregar_opcion_multiple_encuesta",$data);
         }
 

@@ -3,7 +3,6 @@ include("Layouts/header2.php");
 include("Layouts/sidebar2.php");
 ?>
 
-<!-- Área de contenido -->
 <div class="content text-center">
     <h2 class="mb-4">Editar encuesta</h2>
 
@@ -15,10 +14,13 @@ include("Layouts/sidebar2.php");
          echo '<input type="text" class="form-control mx-auto" id="titulo_encuesta" name="titulo_encuesta" value="' . $data["encuesta"]["titulo_encuesta"] . '" style="width: 50%;">';
          echo '<input type="hidden" name="id_encuesta" value="'. $data["encuesta"]["id_encuesta"] .'">'; 
          echo '</div>';
-         echo '<button type="submit" class="btn btn-primary">Actualizar</button>'; 
+         echo '<div class="d-flex justify-content-between mt-3" style="width: 50%; margin: 0 auto;">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="button" onclick="window.history.back();" class="btn btn-secondary">Cancelar</button>
+                </div>';
      echo '</form>';
   
-     echo '</div>'; // Cerrar el contenedor de columna
+     echo '</div>'; 
 
     ?>
 

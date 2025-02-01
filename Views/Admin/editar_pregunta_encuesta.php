@@ -23,7 +23,10 @@
      
          echo '<input type="hidden" name="id_pregunta" value="'. $data["pregunta"]["id_pregunta"] .'">';
          echo '</div>';
-         echo '<button type="submit" class="btn btn-primary mx-auto">Actualizar</button>';
+         echo '<div class="d-flex justify-content-between mt-3" style="width: 50%; margin: 0 auto;">
+         <button type="submit" class="btn btn-primary">Actualizar</button>
+         <button type="button" onclick="window.history.back();" class="btn btn-secondary">Cancelar</button>
+     </div>';
      echo '</form>';
      
      echo '</div>';

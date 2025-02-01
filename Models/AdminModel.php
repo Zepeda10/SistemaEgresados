@@ -7,8 +7,8 @@
         }
 
         // ---------------- AUXILIARES ----------------------
-        public function getQuestionsBySurvey($id){
-            $query = "SELECT id_pregunta, texto_pregunta FROM preguntas WHERE id_encuesta = $id";
+        public function getQuestionsBySurvey(){
+            $query = "SELECT id_pregunta, texto_pregunta FROM preguntas WHERE tipo_pregunta != 'Abierta'";
             $request = $this->select_all($query);
 
             return $request;

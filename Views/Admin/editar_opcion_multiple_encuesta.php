@@ -24,7 +24,10 @@
          echo '<input type="text" class="form-control mx-auto" id="texto_respuesta" name="texto_respuesta" value="' . $data["opcion"]["texto_respuesta"] . '" style="width: 50%;">';
          echo '<input type="hidden" name="id_respuesta" value="'. $data["opcion"]["id_respuesta"] .'">';
          echo '</div>';
-         echo '<button type="submit" class="btn btn-primary mx-auto">Actualizar</button>';
+         echo '<div class="d-flex justify-content-between mt-3" style="width: 50%; margin: 0 auto;">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="button" onclick="window.history.back();" class="btn btn-secondary">Cancelar</button>
+                </div>';
      echo '</form>';
      
      echo '</div>';

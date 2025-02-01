@@ -20,11 +20,14 @@
         }
         echo '</select>';
         
-        echo '<label for="texto_respuesta" class="sr-only mt-2 mb-2">Opción</label>';
+        echo '<label for="texto_respuesta" class="sr-only mt-2 mb-2">Texto de opción</label>';
         echo '<input type="text" class="form-control mx-auto" id="texto_respuesta" name="texto_respuesta" value="" style="width: 50%;">';
         
         echo '</div>';
-        echo '<button type="submit" class="btn btn-primary mx-auto">Guardar</button>';
+        echo '<div class="d-flex justify-content-between mt-3" style="width: 50%; margin: 0 auto;">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" onclick="window.history.back();" class="btn btn-secondary">Cancelar</button>
+                </div>';
         echo '</form>';
         echo '</div>';
 
