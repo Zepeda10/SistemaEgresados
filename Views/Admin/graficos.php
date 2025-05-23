@@ -19,22 +19,74 @@
     </style>
   </head>
   <body> 
-    <h2 class="text-center">Gráfica de la Encuesta <?php echo htmlspecialchars($_GET['encuesta'] ?? ''); ?></h2>
+
+  <?php
+    $tituloEncuesta = '';
+    foreach ($data["graficasAgrupadas"] as $grupo) {
+        if (!empty($grupo) && isset($grupo[0]['titulo'])) {
+            $tituloEncuesta = $grupo[0]['titulo'];
+            break;
+        }
+    }
+    ?>
+
+    <h2 class="text-center">Gráfica de la encuesta "<?php echo $tituloEncuesta ?>"</h2>
     <p class="text-center"><?php echo htmlspecialchars($_GET['fechaInicio'] ?? ''); ?> a <?php echo htmlspecialchars($_GET['fechaFin'] ?? ''); ?></p>
+    
+
+    <?php
+function getColorByValue($value, $min, $max) {
+  if ($max == $min) return 'rgba(255, 0, 0, 0.8)';
+
+    $ratio = ($value - $min) / ($max - $min);
+
+    if ($ratio < 0.5) {
+        // De Azul (0,0,255) a Amarillo (255,255,0)
+        $r = (int)($ratio * 2 * 255);
+        $g = (int)($ratio * 2 * 255);
+        $b = 255 - (int)($ratio * 2 * 255);
+    } else {
+        // De Amarillo (255,255,0) a Rojo (255,0,0)
+        $r = 255;
+        $g = 255 - (int)(($ratio - 0.5) * 2 * 255);
+        $b = 0;
+    }
+
+    return "rgba($r, $g, $b, 0.8)";
+}
+?>
+
+<body>
 
     <?php foreach ($data["graficasAgrupadas"] as $pregunta => $respuestas): ?>
+        <?php
+        $valores = array_map(fn($r) => $r['total_respuestas'], $respuestas);
+        $min = min($valores);
+        $max = max($valores);
+
+        $colores = [];
+        foreach ($respuestas as $resp) {
+            $colores[] = getColorByValue($resp['total_respuestas'], $min, $max);
+        }
+
+        $labelsJS = implode(", ", array_map(fn($r) => '"' . addslashes($r['texto_respuesta']) . '"', $respuestas));
+        $dataJS = implode(", ", array_map(fn($r) => $r['total_respuestas'], $respuestas));
+        $colorsJS = implode(", ", array_map(fn($c) => '"' . $c . '"', $colores));
+        ?>
+
         <h4 class="text-secondary"><?php echo htmlspecialchars($pregunta); ?></h4>
         <canvas id="grafica_<?php echo md5($pregunta); ?>" width="400" height="200"></canvas>
 
         <script>
             const datos_<?php echo md5($pregunta); ?> = {
-                labels: [<?php echo implode(", ", array_map(function($resp) { return '"' . addslashes($resp['texto_respuesta']) . '"'; }, $respuestas)); ?>],
+                labels: [<?php echo $labelsJS; ?>],
                 datasets: [{
                     label: "Respuestas",
-                    data: [<?php echo implode(", ", array_map(function($resp) { return $resp['total_respuestas']; }, $respuestas)); ?>],
-                    backgroundColor: "rgba(75, 192, 192, 0.2)",
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    borderWidth: 1
+                    data: [<?php echo $dataJS; ?>],
+                    backgroundColor: [<?php echo $colorsJS; ?>],
+                    borderColor: "#333",
+                    borderWidth: 1,
+                    barThickness: 85
                 }]
             };
 
@@ -44,10 +96,15 @@
                 options: {
                     responsive: true,
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+        x: {
+            ticks: { autoSkip: false },
+            categoryPercentage: 0.5,
+            barPercentage: 0.5  
+        },
+        y: {
+            beginAtZero: true
+        }
+    }
                 }
             };
 
@@ -55,5 +112,5 @@
             new Chart(ctx_<?php echo md5($pregunta); ?>, config_<?php echo md5($pregunta); ?>);
         </script>
     <?php endforeach; ?>
-  </body>
+</body>
 </html>

@@ -244,17 +244,18 @@
 
         // -------------------------- GRAFICAR --------------------------
         public function graphQuery($encuesta, $fechaInicio, $fechaFin){
-            $query = "SELECT ro.texto_respuesta, COUNT(*) AS total_respuestas, p.texto_pregunta
+            $query = "SELECT ep.titulo_encuesta AS titulo, ro.texto_respuesta, COUNT(*) AS total_respuestas, p.texto_pregunta
             FROM respuestas_usuarios_encuestas rue
             INNER JOIN respuestas_opciones ro ON rue.id_respuesta_opciones = ro.id_respuesta
             INNER JOIN preguntas p ON rue.id_pregunta = p.id_pregunta
+            INNER JOIN encuestas_principales ep ON ep.id_encuesta = rue.id_encuesta
             WHERE rue.id_encuesta = $encuesta 
             AND rue.fecha_respuesta BETWEEN '$fechaInicio' AND '$fechaFin'
             AND rue.id_respuesta_opciones IS NOT NULL
             GROUP BY ro.texto_respuesta
             ORDER BY total_respuestas DESC";
 
-            $request = $this->select_all($query);
+            $request = $this->select_all($query); 
 
 
             return $request;
