@@ -244,32 +244,30 @@
 
         // -------------------------- GRAFICAR --------------------------
         public function graphQuery($encuesta, $fechaInicio, $fechaFin){
-            $query = "SELECT ep.titulo_encuesta AS titulo, ro.texto_respuesta, COUNT(*) AS total_respuestas, p.texto_pregunta
-            FROM respuestas_usuarios_encuestas rue
-            INNER JOIN respuestas_opciones ro ON rue.id_respuesta_opciones = ro.id_respuesta
-            INNER JOIN preguntas p ON rue.id_pregunta = p.id_pregunta
-            INNER JOIN encuestas_principales ep ON ep.id_encuesta = rue.id_encuesta
-            WHERE rue.id_encuesta = $encuesta 
-            AND rue.fecha_respuesta BETWEEN '$fechaInicio' AND '$fechaFin'
-            AND rue.id_respuesta_opciones IS NOT NULL
-            GROUP BY ro.texto_respuesta
-            ORDER BY total_respuestas DESC";
+            $query = "SELECT 
+                        ep.titulo_encuesta AS titulo, 
+                        ro.texto_respuesta, 
+                        COUNT(*) AS total_respuestas, 
+                        p.texto_pregunta 
+                    FROM 
+                        respuestas_usuarios_encuestas rue 
+                        INNER JOIN respuestas_opciones ro ON rue.id_respuesta_opciones = ro.id_respuesta 
+                        INNER JOIN preguntas p ON ro.id_pregunta = p.id_pregunta 
+                        INNER JOIN encuestas_principales ep ON ep.id_encuesta = rue.id_encuesta 
+                    WHERE 
+                        rue.id_encuesta = $encuesta  
+                        AND rue.fecha_respuesta BETWEEN '$fechaInicio' AND '$fechaFin'
+                        AND rue.id_respuesta_opciones IS NOT NULL 
+                    GROUP BY 
+                        ep.titulo_encuesta, ro.texto_respuesta, p.texto_pregunta 
+                    ORDER BY 
+                        total_respuestas DESC";
 
             $request = $this->select_all($query); 
 
 
             return $request;
-          
-
-            /*
-            $datos = [
-                ['opcion' => 'Opción A', 'total_respuestas' => 35],
-                ['opcion' => 'Opción B', 'total_respuestas' => 27],
-                ['opcion' => 'Opción C', 'total_respuestas' => 18],
-                ['opcion' => 'Opción D', 'total_respuestas' => 10],
-            ];
-            return $datos;
-            */
+        
         }
         
     }
