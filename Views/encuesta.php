@@ -41,6 +41,10 @@
                     }else if($question['tipo_pregunta'] == 'Selección'){
                         $id = $question['id_pregunta'];
 
+                        if ($data['id_quiz'] == 4 && $id == 55) {
+                            echo '<p class="fw-bold">Aspectos que valora la empresa u organismo para la contratación de egresados (Donde 1 es muy poco y 5 es mucho)</p>';
+                        }
+
                         echo '<li class="list-group-item mb-2" id="pregunta_seleccion_' . $id . '">
                                 <p>' . $question['texto_pregunta'] . '</p>
                                 <input type="hidden" name="pregunta_id[]" value='.$id.'>

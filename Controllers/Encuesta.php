@@ -15,37 +15,47 @@
         }
 
         public function enviar($quizId){
-            $answers = $_POST["respuesta"];
-            $ids = $_POST["pregunta_id"];
-            //$quizId = isset($_GET['id']) ? (int)$_GET['id'] : 1;
-            $answerType = $_POST["tipo_pregunta"];
-            $i = 0;
+            $answers = $_POST["respuesta"] ?? [];
+    $answerType = $_POST["tipo_pregunta"] ?? [];
 
-            
-            foreach ($answers as $answerId => $allAnswers){
-                $tipo_pregunta = $answerType[$i];
-                $i = $i + 1;
-                    
-                foreach ($allAnswers as $answer) {
+    $i = 0;
 
-                    if($tipo_pregunta == "abierta"){
-                         $this->model->addUsersAnswers($quizId, $answerId, NULL, $answer);
-                        echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - abierta <br>";
-                    }else{
-                         $this->model->addUsersAnswers($quizId, $answerId, $answer, NULL);
-                        echo "<br>" . $quizId . " - " . $answerId . " - " . $answer . " - cerrada <br>";
-                    }
-                    
-                }
+    try {
+        foreach ($answers as $answerId => $allAnswers) {
+            $tipo_pregunta = $answerType[$i] ?? '';
+            $i++;
+
+            // Evitar procesar si no hay respuestas
+            if (empty($allAnswers)) {
+                continue;
             }
 
-            $nextQuizId = $quizId + 1;
+            foreach ($allAnswers as $answer) {
+                if ($tipo_pregunta == "abierta") {
+                    if (trim($answer) !== '') {
+                        $this->model->addUsersAnswers($quizId, $answerId, NULL, $answer);
+                    }
+                } else {
+                    if (is_numeric($answer)) {
+                        $this->model->addUsersAnswers($quizId, $answerId, (int)$answer, NULL);
+                    }
+                }
+            }
+        }
 
-            echo json_encode(['id_quiz' => $data['id_quiz']]);
+        $nextQuizId = $quizId + 1;
 
-            header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId. "?status=success");
-            exit(); 
-            
+        // Puedes omitir esto si ya estás redireccionando
+        echo json_encode(['id_quiz' => $quizId]);
+
+        header("Location: /SistemaEgresados/Encuesta/preguntas/" . $nextQuizId . "?status=success");
+        exit();
+
+    } catch (Exception $e) {
+        // Mostrar error o redirigir con mensaje de error
+        echo "Error al enviar la encuesta: " . $e->getMessage();
+        // También puedes hacer log del error si lo necesitas
+    }
 
         }
        

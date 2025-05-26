@@ -67,32 +67,6 @@ nextButton.addEventListener("click", () => {
 function validarFormulario(event) {
   var openfields = document.querySelectorAll(".form-control");
 
-  if (openfields.length > 0) {
-    for (var i = 0; i < openfields.length; i++) {
-      if (openfields[i].value.trim() === "") {
-        alert(
-          "Por favor, complete todas las preguntas antes de enviar la encuesta."
-        );
-        event.preventDefault();
-        return false;
-      }
-    }
-  }
-
-  var selectionFields = document.querySelectorAll(".form-select");
-
-  if (selectionFields.length > 0) {
-    for (var j = 0; j < selectionFields.length; j++) {
-      if (selectionFields[j].value === "") {
-        alert(
-          "Por favor, complete todas las preguntas antes de enviar la encuesta."
-        );
-        event.preventDefault();
-        return false;
-      }
-    }
-  }
-
   var radioFields = document.querySelectorAll('input[type="radio"]');
 
   if (radioFields.length > 0) {
@@ -112,14 +86,6 @@ function validarFormulario(event) {
       var groupChecked = group.some(function (radio) {
         return radio.checked;
       });
-
-      if (!groupChecked) {
-        alert(
-          "Por favor, complete todas las preguntas antes de enviar la encuesta."
-        );
-        event.preventDefault();
-        return false;
-      }
     }
   }
 
@@ -133,14 +99,6 @@ function validarFormulario(event) {
         break;
       }
     }
-
-    if (!atLeastOne) {
-      alert(
-        "Por favor, complete todas las preguntas antes de enviar la encuesta."
-      );
-      event.preventDefault();
-      return false;
-    }
   }
 
   return true; // La validación ha pasado
@@ -152,13 +110,6 @@ document.getElementById("enviar").addEventListener("click", function (event) {
   // Obtener el idQuiz de la URL
   var url = window.location.pathname; // Ejemplo: SistemaEgresados/Encuesta/preguntas/3
   var idQuiz = parseInt(url.split("/").pop().split("&")[0]);
-
-  // Ejecutar la validación solo si idQuiz es diferente de 3
-  if (idQuiz !== 3) {
-    if (!validarFormulario(event)) {
-      return; // Detener si la validación falla
-    }
-  }
 
   // Inicializar formData
   var formData = new FormData();
